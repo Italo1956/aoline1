@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos para Arbitraje Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            font-size: 12px;
+        }
+        h1 {
+            text-align: left;
+            margin: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 200px); /* 5 productos por fila por defecto con ancho fijo de 200px */
+            gap: 20px; /* Separación entre contenedores */
+            padding: 20px;
+            justify-content: center;
+            
+        }
+        .product-card {
+            background-color: rgb(255, 238, 179);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 220px; /* Ancho fijo de 200px */
+            border: 1px solid black; /* Borde negro de 1px */
+            
+        }
+        .product-card .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .fechaDescarga {
+            font-size: 10px;
+            font-style: italic;
+            color: #555;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        .product-card {
+            position: relative; /* Hacer el contenedor posicionado */
+        }
+        .product-card .header h2 {
+            font-size: 14px;
+            margin: 0;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .product-card .header .index {
+            font-weight: bold;
+            text-align: right;
+            margin-left: 10px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .images img {
+            width: 90px;
+            height: 90px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .details .left,
+        .details .right {
+            flex: 1;
+        }
+        .details div {
+            margin-bottom: 5px;
+            font-size: 8px;
+        }
+        .roi {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+            margin-bottom: 2px;
+            bottom: 0px;
+            position:relative;
+        }
+
+        /* Modo responsive para diferentes tamaños de pantalla */
+        @media (min-width: 1239px) {
+            .container {
+                grid-template-columns: repeat(5, 200px); /* 5 productos por fila */
+                gap: 50px; /* Separación mayor para pantallas grandes */
+            }
+        }
+
+        @media (min-width: 990px) and (max-width: 1239px) {
+            .container {
+                grid-template-columns: repeat(4, 200px); /* 4 productos por fila */
+                gap: 45px; /* Separación ajustada para pantallas medianas */
+            }
+        }
+
+        @media (min-width: 740px) and (max-width: 989px) {
+            .container {
+                grid-template-columns: repeat(3, 200px); /* 3 productos por fila */
+                gap: 45px; /* Separación ajustada para pantallas pequeñas */
+            }
+        }
+
+        @media (min-width: 500px) and (max-width: 739px) {
+            .container {
+                grid-template-columns: repeat(2, 200px); /* 2 productos por fila */
+                gap: 45px; /* Separación ajustada para pantallas más pequeñas */
+            }
+        }
+
+        @media (max-width: 499px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 producto por fila */
+                gap: 25px; /* Separación ajustada para pantallas muy pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos para Arbitraje Online</h1>
+    <div class="container">
+        <!-- Los productos se cargarán aquí -->
+    </div>
+
+    <script src="datos.js"></script>
+</body>
+</html>
