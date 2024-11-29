@@ -131,6 +131,7 @@ h1, h2 {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
+    align-content: center;
 }
 
 /* Filtros en una fila */
@@ -158,7 +159,7 @@ h1, h2 {
 }
 
 .filter-menu input {
-    width: 80px; /* Ancho fijo para inputs y selects */
+    width: 75px; /* Ancho fijo para inputs y selects */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
