@@ -1,12 +1,18 @@
 
 // Este script se ejecutará cuando el documento se haya cargado completamente
 document.addEventListener("DOMContentLoaded", () => {
+    
+    let productosOriginales = []; // Almacena los datos originales para restablecer filtros
+
     // Función para cargar el archivo JSON de productos
     async function cargarDatos() {
         try {
             // Usamos fetch para leer los datos del archivo JSON
             const respuesta = await fetch('datos.json');        
             const datos = await respuesta.json(); // Convertir el contenido a un objeto JSON
+            productosOriginales = datos; // Guardar copia original
+            llenarOpcionesTienda(datos);
+            mostrarProductos(datos);
                                  
             let vendor = [];
             mostrarProductos(datos); // Llamamos a la función para mostrar los productos en el HTML
@@ -25,9 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Llena las opciones del filtro de tienda dinámicamente
+    function llenarOpcionesTienda(datos) {
+        const tiendas = [...new Set(datos.map((p) => p.source_name))];
+        const selectTienda = document.getElementById("storeFilter");
+        tiendas.forEach((tienda) => {
+            const option = document.createElement("option");
+            option.value = tienda;
+            option.textContent = tienda;
+            selectTienda.appendChild(option);
+        });
+    }
+
     // Función para mostrar los productos en el HTML
     async function mostrarProductos(datos) {
         const container = document.querySelector('.container'); // Contenedor donde se cargarán los productos
+        container.innerHTML = ''; // Limpiar productos anteriores
         
         if (!container) { 
             console.error('No se encontró el contenedor .container en el DOM'); 
@@ -110,6 +129,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+     // Aplicar filtros
+     function aplicarFiltros() {
+        let filtrados = [...productosOriginales];
+
+        // Filtros
+        const roiMin = parseFloat(document.getElementById("roiMin").value) || 0;
+        const roiMax = parseFloat(document.getElementById("roiMax").value) || 100;
+        const priceMin = parseFloat(document.getElementById("priceMin").value) || 0;
+        const priceMax = parseFloat(document.getElementById("priceMax").value) || Infinity;
+        const tienda = document.getElementById("storeFilter").value;
+
+        filtrados = filtrados.filter((p) => 
+            p.roi * 100 >= roiMin &&
+            p.roi * 100 <= roiMax &&
+            p.price >= priceMin &&
+            p.price <= priceMax &&
+            (tienda === "" || p.source_name === tienda)
+        );
+
+      // Ordenar
+      const sortBy = document.getElementById("sortBy").value;
+      switch (sortBy) {
+          case "priceAsc":
+              filtrados.sort((a, b) => a.price - b.price);
+              break;
+          case "priceDesc":
+              filtrados.sort((a, b) => b.price - a.price);
+              break;
+          case "roiAsc":
+              filtrados.sort((a, b) => a.roi - b.roi);
+              break;
+          case "roiDesc":
+              filtrados.sort((a, b) => b.roi - a.roi);
+              break;
+      }
+
+      // Mostrar productos filtrados
+      mostrarProductos(filtrados);
+  }   
+
+       // Agregar evento al botón de aplicar filtros
+    document.getElementById("applyFilters").addEventListener("click", aplicarFiltros);
 
     // Llamamos a la función para cargar los datos cuando la página esté lista
     cargarDatos();

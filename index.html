@@ -17,6 +17,12 @@
             text-align: left;
             margin: 20px;
         }
+
+        h2 {
+            text-align: left;
+            margin: 20px;
+        }
+
         .container {
             display: grid;
             grid-template-columns: repeat(5, 200px); /* 5 productos por fila por defecto con ancho fijo de 200px */
@@ -192,6 +198,68 @@
          color: #333;
         }
 
+        .filter-menu-container {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+        .filter-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /*margin-bottom: 20px;
+    padding: 10px;*/
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+}
+
+.filter-menu label {
+    flex: 1 1 30px;
+    font-weight: bold;
+}
+
+.filter-menu input,
+.filter-menu select {
+    /*flex: 1 1 50px;*/
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.filter-menu .small-input {
+        width: 50%; /* Reducimos al 50% */
+    }
+    .filter-menu select {
+        width: auto; /* Mantenemos tamaño normal */
+    }
+
+.filter-menu button {
+    flex: 1 1 150px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter-menu button:hover {
+    background-color: #0056b3;
+}
+
+
         /*.gshop-icon:hover img {
          transform: scale(1.2);  Agranda el ícono al pasar el cursor 
         }*/
@@ -230,16 +298,54 @@
                 grid-template-columns: 1fr; /* 1 producto por fila */
                 gap: 25px; /* Separación ajustada para pantallas muy pequeñas */
             }
+
+            .filter-menu {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
         }
     </style>
 </head>
 <body>
     <h1>Productos para Arbitraje Online</h1>
+    <h2>Filtros</h2>
+    <div class="filter-menu-container"></div>
+    <div class="filter-menu">
+        <label for="roiMin">ROI Mínimo:</label>
+        <input type="number" id="roiMin" placeholder="0" />
+    
+        <label for="roiMax">ROI Máximo:</label>
+        <input type="number" id="roiMax" placeholder="100" />
+    
+        <label for="priceMin">Precio Mínimo:</label>
+        <input type="number" id="priceMin" placeholder="0" step="0.01" />
+    
+        <label for="priceMax">Precio Máximo:</label>
+        <input type="number" id="priceMax" placeholder="1000" step="0.01" />
+    
+        <label for="storeFilter">Tienda:</label>
+        <select id="storeFilter">
+            <option value="">Todas</option>
+            <!-- Se llenarán dinámicamente las opciones -->
+        </select>
+    
+        <label for="sortBy">Ordenar por:</label>
+        <select id="sortBy">
+            <option value="priceAsc">Precio (Ascendente)</option>
+            <option value="priceDesc">Precio (Descendente)</option>
+            <option value="roiAsc">ROI (Ascendente)</option>
+            <option value="roiDesc">ROI (Descendente)</option>
+        </select>
+    
+        <button id="applyFilters">Aplicar Filtros</button>
+    </div>
+
     <div class="container">
         <!-- Los productos se cargarán aquí -->
     </div>
 
-    <script src="datos.js"></script>
+    <script type="module" src="datos.js" defer></script>
 
     <!-- Contenedor para el popup modal -->
 <div id="seller-popup" class="popup hidden">
