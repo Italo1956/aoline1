@@ -131,16 +131,18 @@ h1, h2 {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    align-content: center;
+    /*align-content: center;*/
 }
 
 /* Filtros en una fila */
 .filter-menu {
     display: flex;
     flex-wrap: wrap; /* nowrap asegura que los filtros estén en una sola fila */
-    gap: 10px;
-    justify-content: space-between; /* Distribuye espacio entre filtros */
-    align-items: center;
+    gap: 15px;
+    /*justify-content: space-between;*/ /* Distribuye espacio entre filtros */
+    align-items: center;  /* Centra verticalmente los elementos nuevo */
+    justify-content: center; /* Centra horizontalmente los filtros nuevo*/
+    /*position: relative; /* Para manejar el botón de forma separada nuevo*/
     /*max-width: 1200px;
     width: 100%;*/
 }
@@ -148,8 +150,10 @@ h1, h2 {
 /* Agrupador para cada par de etiqueta y entrada */
 .filter-group {
     display: flex;
-    flex-direction: column; /* Cambia a fila en pantallas pequeñas */
-    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    /*flex-direction: column;*/ /* Cambia a fila en pantallas pequeñas */
+    /*align-items: flex-start;*/ /* Alinea el contenido a la izquierda */
+    align-items: center; /* Mantiene el label y el input alineados verticalmente nuevo */
+    flex: 0 1 auto; /* Permite que los elementos se adapten según su contenido  nuevo*/
     gap: 5px; /* Espacio entre label e input */
 }
 
@@ -159,17 +163,17 @@ h1, h2 {
 }
 
 .filter-menu input {
-    width: 75px; /* Ancho fijo para inputs y selects */
+    width: 75px; /* Ancho fijo para inputs  */
     padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .filter-menu select {
-    width: 150px; /* Ancho fijo para inputs y selects */
+    width: 150px; /* Ancho fijo para selects */
     padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 /* Estilo para el botón de aplicar filtros */
@@ -180,7 +184,12 @@ h1, h2 {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    margin-left: auto; /* Empuja el botón hacia la derecha */
+    /*margin-left: auto; /* Empuja el botón hacia la derecha */
+    /*position: absolute; /* Posiciona el botón independientemente de los filtros nuevo*/
+    /*right: 10px; /* Alinea el botón a la derecha nuevo*/
+    /*top: 50%; /* nuevo*/
+    /*transform: translateY(-50%); /* Centra verticalmente el botón nuevo*/
+    flex-shrink: 0; /* Evita que el botón se reduzca */
 }
 
 .filter-menu button:hover {
@@ -226,34 +235,30 @@ h1, h2 {
 /* Estilos Responsivos */
 @media (max-width: 500px) {
     .filter-menu {
-        /*flex-direction: column;*/ /* Cambia a diseño vertical */
+        /*flex-direction: column;*/ /* Cambia a diseño vertical aqui la puse*/
         align-items: stretch; /* Estira los elementos para que ocupen todo el ancho */
+        gap: 10px; /* Reduce el espacio entre los filtros */
     }
 
     .filter-group {
-        flex-direction: row; /* Mantiene label y input en línea */
-        /*justify-content: space-between;*/
-        /*width: 100%; *//* Ocupan todo el ancho disponible */
+        flex-direction: row; /* Mantiene label y input en línea aqui la quite*/
+        /*justify-content: space-between; /*nuevo*/
+        /*width: 100%; /* Ocupan todo el ancho disponible  nuevo*/
     }
 
     /*.filter-menu input,
     .filter-menu select {
-        width: calc(100% - 80px);  Reduce el ancho, respetando el espacio del label 
+        /*width: calc(100% - 80px);*/  /*Reduce el ancho, respetando el espacio del label nuevo
+        width: 30%;  /* Ocupan todo el ancho en pantallas muy pequeñas  
     }*/
 
     .filter-menu button {
         margin-left: 0; /* Quita el margen izquierdo */
         align-self: flex-end; /* Coloca el botón al final */
+        /*position: static; /* Cambia a flujo normal nuevo*/
+        /*margin-left: auto; /* Empuja el botón hacia la derecha nuevo*/
+        /*transform: none; /* Elimina el ajuste de posición nuevo*/
+        /*align-self: flex-end; /* Asegura que quede a la derecha nuevo*/
     }
 }
 
-@media (max-width: 500px) {
-    .filter-menu {
-        gap: 10px; /* Reduce el espacio entre los filtros */
-    }
-
-    /*.filter-menu input,
-    .filter-menu select {
-        width: 30%;  Ocupan todo el ancho en pantallas muy pequeñas 
-    }*/
-}
