@@ -5,331 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos para Arbitraje Online</title>
     <link rel="icon" href="star.ico">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            font-size: 12px;
-        }
-        h1 {
-            text-align: left;
-            margin: 20px;
-        }
-
-        h2 {
-            text-align: left;
-            margin: 20px;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(5, 200px); /* 5 productos por fila por defecto con ancho fijo de 200px */
-            gap: 20px; /* Separación entre contenedores */
-            padding: 20px;
-            justify-content: center;
-            
-        }
-        .product-card {
-            background-color: rgb(255, 238, 179);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 220px; /* Ancho fijo de 200px */
-            border: 1px solid black; /* Borde negro de 1px */
-            
-        }
-        .product-card .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .fechaDescarga {
-            font-size: 10px;
-            font-style: italic;
-            color: #555;
-            text-align: left;
-            margin-bottom: 5px;
-        }
-        .product-card {
-            position: relative; /* Hacer el contenedor posicionado */
-        }
-        .product-card .header h2 {
-            font-size: 14px;
-            margin: 0;
-            text-align: left;
-            flex-grow: 1;
-        }
-        .product-card .header .index {
-            font-weight: bold;
-            text-align: right;
-            margin-left: 10px;
-        }
-        .images {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            /*width: 90px;
-            height: 90px;*/
-        }
-        .images img {
-            width: 90px;
-            height: 90px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .details {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .details .left,
-        .details .right {
-            flex: 1;
-        }
-        .details div {
-            margin-bottom: 5px;
-            font-size: 8px;
-        }
-        .roi {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: green;
-            margin-bottom: 2px;
-            bottom: 0px;
-            position:relative;
-        }
-
-        /* Regla general para las imágenes dentro de .images */
-
-/* Regla específica para el ícono dentro de .gshop-icon */
-.product-card .left .gshop-icon img {
-    width: 1px; /* Tamaño reducido al 75% */
-    height: auto; /* Mantener proporción */
-    border: none; /* Eliminar cualquier borde */
-    margin-top: 5px;
-    display: inline-block;
-}
-
-.product-card .left .gshop-icon {
-    display: block; /* Asegura que el ícono esté en una nueva línea */
-    text-align: center; /* Centrar el ícono */
-    margin-top: 5px; /* Espaciado adicional desde el contenido previo */
-}
-
-/* Hover: Efecto de zoom */
-.product-card .left .gshop-icon:hover img {
-    transform: scale(1.2); /* Ampliar el tamaño al pasar el mouse */
-    transition: transform 0.2s ease-in-out;
-}
-
-        /* Estilo para el enlace del ícono */
-        .gshop-icon {
-        position: absolute;
-        bottom: 10px;  /*Ajusta según sea necesario*/ 
-        left: 10px;  /*Ajusta según sea necesario*/ 
-        display: inline-block;
-        width: 5px;  /*Tamaño del ícono*/ 
-        height: 5px;
-        }
-
-        .gshop-icon img {
-        width: 5px;  /*El ícono ocupa todo el espacio del enlace */
-        height: 5px;
-        border-radius: 50%;   /* Opcional: bordes redondeados*/ 
-        border: 1px solid #ccc;  /* Opcional: borde decorativo*/ 
-        display: block;
-        transition: transform 0.2s ease-in-out; /* Animación de hover*/ 
-        }
-        
-        .popup {
-         position: fixed;
-         top: 25%;
-         left: 37.5%;
-         width: 25%;
-         height: auto;
-         background: #fff;
-         border: 1px solid #ccc;
-         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-         z-index: 1000;
-         padding: 10px;
-         border-radius: 8px;
-         display: flex;
-         flex-direction: column;
-        }
-
-        .popup-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        margin-bottom: 10px;
-        }
-
-        .popup-content {
-         overflow-y: auto;
-         max-height: 300px;
-        }
-
-        .popup ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        }
-
-        .popup li {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-        }
-
-        .popup.hidden {
-        display: none;
-        }
-
-        .popup button {
-         background: none;
-         border: none;
-         cursor: pointer;
-         font-size: 16px;
-         font-weight: bold;
-         color: #333;
-        }
-
-        .filter-menu-container {
-        position: sticky;
-        top: 0;
-        background-color: #fff;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        padding: 10px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-        .filter-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /*margin-bottom: 20px;
-    padding: 10px;*/
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    align-items: center;
-        justify-content: center;
-        max-width: 1200px;
-        width: 100%;
-}
-
-.filter-menu label {
-    flex: 1 1 30px;
-    font-weight: bold;
-}
-
-.filter-menu input,
-.filter-menu select {
-    /*flex: 1 1 50px;*/
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-.filter-menu .small-input {
-        width: 50%; /* Reducimos al 50% */
-    }
-    .filter-menu select {
-        width: auto; /* Mantenemos tamaño normal */
-    }
-
-.filter-menu button {
-    flex: 1 1 150px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.filter-menu button:hover {
-    background-color: #0056b3;
-}
-
-
-        /*.gshop-icon:hover img {
-         transform: scale(1.2);  Agranda el ícono al pasar el cursor 
-        }*/
-
-        /* Modo responsive para diferentes tamaños de pantalla */
-        @media (min-width: 1239px) {
-            .container {
-                grid-template-columns: repeat(5, 200px); /* 5 productos por fila */
-                gap: 50px; /* Separación mayor para pantallas grandes */
-            }
-        }
-
-        @media (min-width: 990px) and (max-width: 1239px) {
-            .container {
-                grid-template-columns: repeat(4, 200px); /* 4 productos por fila */
-                gap: 45px; /* Separación ajustada para pantallas medianas */
-            }
-        }
-
-        @media (min-width: 740px) and (max-width: 989px) {
-            .container {
-                grid-template-columns: repeat(3, 200px); /* 3 productos por fila */
-                gap: 45px; /* Separación ajustada para pantallas pequeñas */
-            }
-        }
-
-        @media (min-width: 500px) and (max-width: 739px) {
-            .container {
-                grid-template-columns: repeat(2, 200px); /* 2 productos por fila */
-                gap: 45px; /* Separación ajustada para pantallas más pequeñas */
-            }
-        }
-
-        @media (max-width: 499px) {
-            .container {
-                grid-template-columns: 1fr; /* 1 producto por fila */
-                gap: 25px; /* Separación ajustada para pantallas muy pequeñas */
-            }
-
-            .filter-menu {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        }
-    </style>
+    <link rel="stylesheet" href="miestilo.css">
 </head>
 <body>
     <h1>Productos para Arbitraje Online</h1>
     <h2>Filtros</h2>
-    <div class="filter-menu-container"></div>
+    <!-- <div class="filter-menu-container"></div> -->
     <div class="filter-menu">
+        <div class="filter-group">  
         <label for="roiMin">ROI Mínimo:</label>
         <input type="number" id="roiMin" placeholder="0" />
-    
+    </div>
+    <div class="filter-group">
         <label for="roiMax">ROI Máximo:</label>
-        <input type="number" id="roiMax" placeholder="100" />
-    
+        <input type="number" id="roiMax" placeholder="300" />
+    </div>   
+    <div class="filter-group">
         <label for="priceMin">Precio Mínimo:</label>
         <input type="number" id="priceMin" placeholder="0" step="0.01" />
-    
+    </div> 
+    <div class="filter-group">
         <label for="priceMax">Precio Máximo:</label>
         <input type="number" id="priceMax" placeholder="1000" step="0.01" />
-    
+    </div>
+    <div class="filter-group">
         <label for="storeFilter">Tienda:</label>
         <select id="storeFilter">
             <option value="">Todas</option>
             <!-- Se llenarán dinámicamente las opciones -->
         </select>
-    
+    </div>   
+    <div class="filter-group">
         <label for="sortBy">Ordenar por:</label>
         <select id="sortBy">
             <option value="priceAsc">Precio (Ascendente)</option>
@@ -337,10 +43,10 @@
             <option value="roiAsc">ROI (Ascendente)</option>
             <option value="roiDesc">ROI (Descendente)</option>
         </select>
-    
+    </div>   
         <button id="applyFilters">Aplicar Filtros</button>
     </div>
-
+   
     <div class="container">
         <!-- Los productos se cargarán aquí -->
     </div>
@@ -348,15 +54,14 @@
     <script type="module" src="datos.js" defer></script>
 
     <!-- Contenedor para el popup modal -->
-<div id="seller-popup" class="popup hidden">
-    <div class="popup-header">
-        <span>Lista de Vendedores</span>
-        <button id="close-popup">X</button>
+    <div id="seller-popup" class="popup hidden">
+        <div class="popup-header">
+            <span>Lista de Vendedores</span>
+            <button id="close-popup">X</button>
+        </div>
+        <div class="popup-content">
+            <ul id="seller-list"></ul>
+        </div>
     </div>
-    <div class="popup-content">
-        <ul id="seller-list"></ul>
-    </div>
-</div>
-
 </body>
 </html>
