@@ -1,3 +1,4 @@
+
 // Este script se ejecutará cuando el documento se haya cargado completamente
 document.addEventListener("DOMContentLoaded", () => {
     // Función para cargar el archivo JSON de productos
@@ -14,8 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+     // Función para verificar si la imagen existe
+     function imagenExiste(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);  // Si la imagen carga correctamente
+            img.onerror = () => resolve(false);  // Si hay un error al cargar la imagen
+            img.src = url;  // Intentar cargar la imagen
+        });
+    }
+
     // Función para mostrar los productos en el HTML
-    function mostrarProductos(datos) {
+    async function mostrarProductos(datos) {
         const container = document.querySelector('.container'); // Contenedor donde se cargarán los productos
         
         if (!container) { 
@@ -23,23 +34,28 @@ document.addEventListener("DOMContentLoaded", () => {
             return; }
         
         // Recorremos todos los productos
-        datos.forEach((producto, index) => {
+        for (const [index, producto] of datos.entries()) {
             // Creamos una nueva tarjeta de producto
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
             const vendor = JSON.parse(producto.az_offers);
+
+            // Verificar si la imagen existe y asignar 'imagesoon.jpg' si no
+            const imgSrc = await imagenExiste(producto.img) ? producto.img : 'Imagesoon.jpg';
+            const azImgSrc = await imagenExiste(producto.az_img) ? producto.az_img : 'Imagesoon.jpg';
+            
             // Función para recortar el título a 25 caracteres con "..."
             function recortarTitulo(titulo) {
                   
                  if (titulo.length > 25)  return titulo.slice(0, 25) + "..."; 
-                 return titulo; // Recorta el título 
+                 return titulo; // Recorta el título a 25
                 
             }
 
             function recortarTitulo2(titulo) {
                   
                 if (titulo.length > 65)  return titulo.slice(0, 65); 
-                 return titulo; // Recorta el título 
+                 return titulo; // Recorta el título a 65 para buscar en Google Shopping
                
            }
 
@@ -53,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="images">
                     <div class="left">
                         <a href="${producto.url}" target="_blank">
-                            <img src="${producto.img}" alt="Imagen izquierda" title="Buscar en la tienda">
+                            <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda">
                         </a>
                         <div>Tienda: ${producto.source_name}</div>
                         <div>Precio: $${producto.price.toFixed([2])}</div>
@@ -63,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                     <div class="right">
                         <a href="${producto.asin}" target="_blank">
-                            <img src="${producto.az_img}" alt="Imagen derecha" title="Ir a AMAZON">
+                            <img src="${azImgSrc}" alt="Imagen derecha" title="Ir a AMAZON">
                             </a>
                         <div>AMAZON</div>
                         <a href="${producto.asin}" target="_blank">
@@ -91,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
             
        
-        });
+        }
     }
 
 

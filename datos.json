@@ -17,18 +17,18 @@
   {
     "asin": "https://www.amazon.com/gp/product/B00065V026",
     "az_img": "https://m.media-amazon.com/images/I/41rcJoBKsSL.jpg",
-    "az_offers": "[{\"seller\": \"A3JJT0KLL7SPAU\", \"price\": 8.86, \"seller_feedback_count\": 2243, \"seller_positive_feedback_rating\": 89.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A32RJSSCTUIP2F\", \"price\": 8.87, \"seller_feedback_count\": 12145, \"seller_positive_feedback_rating\": 90.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AOKD2FXWW1MIG\", \"price\": 8.87, \"seller_feedback_count\": 18, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AJWTJ7FK2IAS8\", \"price\": 8.87, \"seller_feedback_count\": 31, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A1UF9KP9TLEXV\", \"price\": 8.87, \"seller_feedback_count\": 22, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A328R8VXV5FONG\", \"price\": 8.88, \"seller_feedback_count\": 67, \"seller_positive_feedback_rating\": 95.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3H9FJZ2C6UG8C\", \"price\": 8.89, \"seller_feedback_count\": 28, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A11F479L4BZDRW\", \"price\": 8.9, \"seller_feedback_count\": 17, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A9G6VDGOK2CZF\", \"price\": 8.99, \"seller_feedback_count\": 2011, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2FVFGB6895YJ5\", \"price\": 8.99, \"seller_feedback_count\": 55, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A37KCR3WJTLULP\", \"price\": 8.99, \"seller_feedback_count\": 2910, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3RN0R0W6DFU1G\", \"price\": 9.07, \"seller_feedback_count\": 1760, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2RDL822XCIA3R\", \"price\": 9.67, \"seller_feedback_count\": 40052, \"seller_positive_feedback_rating\": 62.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3Q4G3L3CJPLWW\", \"price\": 10.0, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2P773UCTKD666\", \"price\": 11.05, \"seller_feedback_count\": 4372, \"seller_positive_feedback_rating\": 93.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A121AJ7HER8CGW\", \"price\": 16.0, \"seller_feedback_count\": 203, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3492A4RFALDQG\", \"price\": 16.38, \"seller_feedback_count\": 20131, \"seller_positive_feedback_rating\": 83.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2P773UCTKD666\", \"price\": 16.490000000000002, \"seller_feedback_count\": 4372, \"seller_positive_feedback_rating\": 93.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
+    "az_offers": "[{\"seller\": \"A3JJT0KLL7SPAU\", \"price\": 8.86, \"seller_feedback_count\": 2243, \"seller_positive_feedback_rating\": 89.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A32RJSSCTUIP2F\", \"price\": 8.87, \"seller_feedback_count\": 12145, \"seller_positive_feedback_rating\": 90.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AOKD2FXWW1MIG\", \"price\": 8.87, \"seller_feedback_count\": 18, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AJWTJ7FK2IAS8\", \"price\": 8.87, \"seller_feedback_count\": 32, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A1UF9KP9TLEXV\", \"price\": 8.87, \"seller_feedback_count\": 22, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A328R8VXV5FONG\", \"price\": 8.88, \"seller_feedback_count\": 67, \"seller_positive_feedback_rating\": 95.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3H9FJZ2C6UG8C\", \"price\": 8.89, \"seller_feedback_count\": 28, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A11F479L4BZDRW\", \"price\": 8.9, \"seller_feedback_count\": 17, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A9G6VDGOK2CZF\", \"price\": 8.99, \"seller_feedback_count\": 2012, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2FVFGB6895YJ5\", \"price\": 8.99, \"seller_feedback_count\": 55, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A37KCR3WJTLULP\", \"price\": 8.99, \"seller_feedback_count\": 2910, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3RN0R0W6DFU1G\", \"price\": 9.07, \"seller_feedback_count\": 1760, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2RDL822XCIA3R\", \"price\": 9.67, \"seller_feedback_count\": 40052, \"seller_positive_feedback_rating\": 62.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3Q4G3L3CJPLWW\", \"price\": 10.0, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2P773UCTKD666\", \"price\": 11.05, \"seller_feedback_count\": 4372, \"seller_positive_feedback_rating\": 93.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A121AJ7HER8CGW\", \"price\": 16.0, \"seller_feedback_count\": 203, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3492A4RFALDQG\", \"price\": 16.38, \"seller_feedback_count\": 20134, \"seller_positive_feedback_rating\": 83.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2P773UCTKD666\", \"price\": 16.490000000000002, \"seller_feedback_count\": 4372, \"seller_positive_feedback_rating\": 93.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
     "az_price": 8.86,
     "img": "https://cdn.shopify.com/s/files/1/0105/8992/9572/files/Relton-4oznew_01_74533195-e8dc-41a0-8ab3-7c570c5e6c17.jpg?v=1728256218",
     "moq": 1,
     "price": 2.85,
     "qty": 12,
     "roi": 0.5473684210526314,
-    "sales_rank": 41595,
+    "sales_rank": 31781,
     "source_name": "mytoolstore",
     "title": "Rapid Tap Heavy Duty Cutting Fluid 4 Ounce",
     "url": "https://mytoolstore.com/products/relton-4oznew-rapid-tap-cutting-fluid-oil-4oz-bottle-04z-nrt#0785401300040",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B08D7G5KTN",
@@ -59,7 +59,7 @@
     "source_name": "hartmannvariety",
     "title": "Stanley 10788 Curved Quick-Change Utility Knife, High Carbon Steel Retractable Blade, 3 Blades",
     "url": "https://hartmannvariety.com/10-788/",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B0BVXN413S",
@@ -200,18 +200,18 @@
   {
     "asin": "https://www.amazon.com/gp/product/B07TK48JG6",
     "az_img": "https://m.media-amazon.com/images/I/41CyRts9ZsL.jpg",
-    "az_offers": "[{\"seller\": \"ARSKHJUHN6WMF\", \"price\": 9.75, \"seller_feedback_count\": 0, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3N0EGKSUAT4ZM\", \"price\": 9.8, \"seller_feedback_count\": 250, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1NJJMFBDLQNWE\", \"price\": 9.94, \"seller_feedback_count\": 34, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A1VXPWL0FCJPXX\", \"price\": 9.95, \"seller_feedback_count\": 105, \"seller_positive_feedback_rating\": 67.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATJR01MRA1RMS\", \"price\": 9.99, \"seller_feedback_count\": 704, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A1Z2G8D0X6PRNW\", \"price\": 9.99, \"seller_feedback_count\": 31, \"seller_positive_feedback_rating\": 70.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ABMT18ZAI3WKH\", \"price\": 9.99, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2V9IL6BAXBIAD\", \"price\": 9.99, \"seller_feedback_count\": 228, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2EGQU82SNYQ4O\", \"price\": 9.99, \"seller_feedback_count\": 123, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3EZS2PUYXL89G\", \"price\": 10.51, \"seller_feedback_count\": 65, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A30WWLFW5EGZRK\", \"price\": 14.5, \"seller_feedback_count\": 9, \"seller_positive_feedback_rating\": 56.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2829FE89LPWB6\", \"price\": 14.89, \"seller_feedback_count\": 219, \"seller_positive_feedback_rating\": 78.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AECOXX7NJ0GRG\", \"price\": 14.98, \"seller_feedback_count\": 7, \"seller_positive_feedback_rating\": 57.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
+    "az_offers": "[{\"seller\": \"ARSKHJUHN6WMF\", \"price\": 9.75, \"seller_feedback_count\": 0, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3N0EGKSUAT4ZM\", \"price\": 9.8, \"seller_feedback_count\": 250, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1NJJMFBDLQNWE\", \"price\": 9.94, \"seller_feedback_count\": 35, \"seller_positive_feedback_rating\": 77.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A1VXPWL0FCJPXX\", \"price\": 9.94, \"seller_feedback_count\": 106, \"seller_positive_feedback_rating\": 68.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATJR01MRA1RMS\", \"price\": 9.98, \"seller_feedback_count\": 709, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A1Z2G8D0X6PRNW\", \"price\": 9.99, \"seller_feedback_count\": 32, \"seller_positive_feedback_rating\": 71.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ABMT18ZAI3WKH\", \"price\": 9.99, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2V9IL6BAXBIAD\", \"price\": 9.99, \"seller_feedback_count\": 227, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2EGQU82SNYQ4O\", \"price\": 9.99, \"seller_feedback_count\": 123, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A3EZS2PUYXL89G\", \"price\": 10.51, \"seller_feedback_count\": 66, \"seller_positive_feedback_rating\": 94.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A30WWLFW5EGZRK\", \"price\": 14.5, \"seller_feedback_count\": 10, \"seller_positive_feedback_rating\": 60.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2829FE89LPWB6\", \"price\": 14.89, \"seller_feedback_count\": 219, \"seller_positive_feedback_rating\": 77.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AECOXX7NJ0GRG\", \"price\": 14.98, \"seller_feedback_count\": 7, \"seller_positive_feedback_rating\": 57.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
     "az_price": 9.75,
     "img": "https://cdn.shopify.com/s/files/1/0582/9302/6998/products/407-0113.jpg?v=1681851755",
     "moq": 1,
     "price": 4.29,
     "qty": 12,
     "roi": 0.4918414918414919,
-    "sales_rank": 68989,
+    "sales_rank": 65202,
     "source_name": "netrition",
     "title": "Russell Stover Chocolates Almond Bar, Sugar Free, 3 Ounce",
     "url": "https://netrition.com/products/russell-stover-sugar-free-candy-bars#0077260095541",
-    "fechaDescarga": "23-11-2024 07:25"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B000S83GO6",
@@ -339,7 +339,7 @@
     "source_name": "hy-vee",
     "title": "Primrose, Old Fashion Hard Candy Mix, 13 Ounce",
     "url": "https://hy-vee.com/aisles-online/p/1321051",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B000S83GO6",
@@ -520,18 +520,18 @@
   {
     "asin": "https://www.amazon.com/gp/product/B002LMIPUM",
     "az_img": "https://m.media-amazon.com/images/I/41WlFEfPNaL.jpg",
-    "az_offers": "[{\"seller\": \"A30WHFKY70VTX\", \"price\": 15.99, \"seller_feedback_count\": 3, \"seller_positive_feedback_rating\": 33.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ANZR62OFOMY7I\", \"price\": 16.05, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A354SBSX27H1FF\", \"price\": 16.14, \"seller_feedback_count\": 90223, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A2R2RITDJNW1Q6\", \"price\": 16.38, \"seller_feedback_count\": 385, \"seller_positive_feedback_rating\": 91.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATZ9QTKWJHCNC\", \"price\": 16.89, \"seller_feedback_count\": 245, \"seller_positive_feedback_rating\": 75.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ASFP9FOGA56TZ\", \"price\": 16.92, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A36W9UHW9TCUWM\", \"price\": 17.48, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2FQDZSXJ36Q83\", \"price\": 17.89, \"seller_feedback_count\": 182, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2Y0B68P83XUU8\", \"price\": 17.89, \"seller_feedback_count\": 19, \"seller_positive_feedback_rating\": 84.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATODKWV84AB74\", \"price\": 18.45, \"seller_feedback_count\": 44, \"seller_positive_feedback_rating\": 96.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2XWW6HXRDIED2\", \"price\": 18.5, \"seller_feedback_count\": 26, \"seller_positive_feedback_rating\": 67.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A31759UB3ZITIO\", \"price\": 18.5, \"seller_feedback_count\": 52, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AO09LYS6XUR3D\", \"price\": 19.9, \"seller_feedback_count\": 11, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A171T3TTWJXKOZ\", \"price\": 19.99, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1VRSK463X1XAY\", \"price\": 21.73, \"seller_feedback_count\": 348, \"seller_positive_feedback_rating\": 98.0, \"is_buy_box_winner\": false, \"is_fba\": true}]",
+    "az_offers": "[{\"seller\": \"A30WHFKY70VTX\", \"price\": 15.99, \"seller_feedback_count\": 3, \"seller_positive_feedback_rating\": 33.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ANZR62OFOMY7I\", \"price\": 16.05, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A354SBSX27H1FF\", \"price\": 16.14, \"seller_feedback_count\": 90223, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": true, \"is_fba\": true}, {\"seller\": \"A2R2RITDJNW1Q6\", \"price\": 16.38, \"seller_feedback_count\": 385, \"seller_positive_feedback_rating\": 91.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATZ9QTKWJHCNC\", \"price\": 16.89, \"seller_feedback_count\": 245, \"seller_positive_feedback_rating\": 75.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ASFP9FOGA56TZ\", \"price\": 17.15, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A36W9UHW9TCUWM\", \"price\": 17.48, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2FQDZSXJ36Q83\", \"price\": 17.89, \"seller_feedback_count\": 182, \"seller_positive_feedback_rating\": 76.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2Y0B68P83XUU8\", \"price\": 17.89, \"seller_feedback_count\": 19, \"seller_positive_feedback_rating\": 84.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"ATODKWV84AB74\", \"price\": 18.45, \"seller_feedback_count\": 44, \"seller_positive_feedback_rating\": 96.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A2XWW6HXRDIED2\", \"price\": 18.5, \"seller_feedback_count\": 26, \"seller_positive_feedback_rating\": 67.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"A31759UB3ZITIO\", \"price\": 18.5, \"seller_feedback_count\": 52, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": true}, {\"seller\": \"AO09LYS6XUR3D\", \"price\": 19.9, \"seller_feedback_count\": 11, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A171T3TTWJXKOZ\", \"price\": 19.99, \"seller_feedback_count\": 2, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1VRSK463X1XAY\", \"price\": 21.73, \"seller_feedback_count\": 348, \"seller_positive_feedback_rating\": 98.0, \"is_buy_box_winner\": false, \"is_fba\": true}]",
     "az_price": 15.99,
     "img": "https://wholesale.frontiercoop.com/media/catalog/product/D/r/Dr-Bronner-Castile-Soaps-Almond-8oz-216575-Front.jpeg?optimize=medium&bg-color=255,255,255&fit=bounds&height=300&width=240&canvas=240:300",
     "moq": 1,
     "price": 4.89,
     "qty": 240,
     "roi": 0.8732106339468306,
-    "sales_rank": 8826,
+    "sales_rank": 9462,
     "source_name": "frontiercoop",
     "title": "Dr. Bronner's - Pure-Castile Liquid Soap (Almond, 8 ounce) - Made with Organic Oils, 18-in-1 Uses: Face, Body, Hair, Laundry, Pets and Dishes, Concentrated, Vegan, Non-GMO",
     "url": "https://wholesale.frontiercoop.com/search/?q=216575",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B08D7G5KTN",
@@ -547,7 +547,7 @@
     "source_name": "b2bsportswear",
     "title": "Bella Canvas - Unisex Jersey Tee - 3001 - S - Dusty Blue",
     "url": "https://b2bsportswear.com/BELLA-+-CANVAS-3001#884913695023",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B0B626KN8R",
@@ -595,7 +595,7 @@
     "source_name": "cvs",
     "title": "Burt’s Bees 100% Natural Glossy Lipstick, Pink Pool - 1 Tube",
     "url": "https://www.cvs.com/shop/burt-s-bees-100-natural-glossy-lipstick-prodid-1520020",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 20:19"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B007A3MBJS",
@@ -627,23 +627,23 @@
     "source_name": "mattel",
     "title": "Mattel Disney Moana 2 Moana Fashion Doll with 2 Accessories, Removable Outfit with Necklace & Anklet, Inspired by The Movie",
     "url": "https://shop.mattel.com/products/disney-moana-2-moana-fashion-doll-jbt33#0194735265398",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B0CH1N5QFD",
     "az_img": "https://m.media-amazon.com/images/I/31+9Exsz5PL.jpg",
-    "az_offers": "[{\"seller\": \"AOCNL7WDIBUHN\", \"price\": 137.37, \"seller_feedback_count\": 1235, \"seller_positive_feedback_rating\": 70.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3KPHGJZVOLD1G\", \"price\": 137.37, \"seller_feedback_count\": 48, \"seller_positive_feedback_rating\": 52.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AC84Y246HJ6PO\", \"price\": 137.37, \"seller_feedback_count\": 25, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2R04QTOH6NY8S\", \"price\": 137.37, \"seller_feedback_count\": 2252, \"seller_positive_feedback_rating\": 95.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AN8LHKZ311QV3\", \"price\": 137.37, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1FMYMNUP87CU5\", \"price\": 137.37, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2KEQI0XQEOG6T\", \"price\": 137.38, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1J4K4IDFX16BR\", \"price\": 138.86, \"seller_feedback_count\": 14, \"seller_positive_feedback_rating\": 42.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1C1P4PKIZUP25\", \"price\": 138.89000000000001, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A23D646NZXGBA7\", \"price\": 139.2, \"seller_feedback_count\": 119, \"seller_positive_feedback_rating\": 70.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2E1VN4OEXE0LB\", \"price\": 139.29999999999998, \"seller_feedback_count\": 7823, \"seller_positive_feedback_rating\": 91.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ADI0JFTP1MJH3\", \"price\": 152.24, \"seller_feedback_count\": 939, \"seller_positive_feedback_rating\": 89.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1B43WMIJ58I3U\", \"price\": 171.16, \"seller_feedback_count\": 2220, \"seller_positive_feedback_rating\": 69.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2B9B9OGF1VYTL\", \"price\": 172.66, \"seller_feedback_count\": 26, \"seller_positive_feedback_rating\": 62.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
+    "az_offers": "[{\"seller\": \"AOCNL7WDIBUHN\", \"price\": 137.37, \"seller_feedback_count\": 1235, \"seller_positive_feedback_rating\": 70.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A3KPHGJZVOLD1G\", \"price\": 137.37, \"seller_feedback_count\": 48, \"seller_positive_feedback_rating\": 52.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AC84Y246HJ6PO\", \"price\": 137.37, \"seller_feedback_count\": 25, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2R04QTOH6NY8S\", \"price\": 137.37, \"seller_feedback_count\": 2253, \"seller_positive_feedback_rating\": 95.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"AN8LHKZ311QV3\", \"price\": 137.37, \"seller_feedback_count\": 4, \"seller_positive_feedback_rating\": 50.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1FMYMNUP87CU5\", \"price\": 137.37, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1QE8B8H09P5OJ\", \"price\": 137.37, \"seller_feedback_count\": 0, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2KEQI0XQEOG6T\", \"price\": 137.38, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 0.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1J4K4IDFX16BR\", \"price\": 138.86, \"seller_feedback_count\": 14, \"seller_positive_feedback_rating\": 42.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1C1P4PKIZUP25\", \"price\": 138.89000000000001, \"seller_feedback_count\": 1, \"seller_positive_feedback_rating\": 100.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A23D646NZXGBA7\", \"price\": 139.78, \"seller_feedback_count\": 119, \"seller_positive_feedback_rating\": 70.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2E1VN4OEXE0LB\", \"price\": 139.88, \"seller_feedback_count\": 7823, \"seller_positive_feedback_rating\": 91.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"ADI0JFTP1MJH3\", \"price\": 152.24, \"seller_feedback_count\": 939, \"seller_positive_feedback_rating\": 89.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A1B43WMIJ58I3U\", \"price\": 171.16, \"seller_feedback_count\": 2220, \"seller_positive_feedback_rating\": 69.0, \"is_buy_box_winner\": false, \"is_fba\": false}, {\"seller\": \"A2B9B9OGF1VYTL\", \"price\": 172.66, \"seller_feedback_count\": 26, \"seller_positive_feedback_rating\": 62.0, \"is_buy_box_winner\": false, \"is_fba\": false}]",
     "az_price": 137.37,
     "img": "https://www.rei.com/media/product/2228230060",
     "moq": 1,
     "price": 69.83,
     "qty": 12,
     "roi": 0.562938565086639,
-    "sales_rank": 24616,
+    "sales_rank": 12844,
     "source_name": "rei",
     "title": "Brooks Women’s Cascadia 17 Trail Running Shoe - White Sand/Chateau Grey - 11 Medium",
     "url": "https://www.rei.com/product/222823/brooks-cascadia-17-trail-running-shoes-womens#0195394408256",
-    "fechaDescarga": "27/11/2024, 09:00"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B095HMH1K5",
@@ -675,7 +675,7 @@
     "source_name": "hardwareandmoreee",
     "title": "Anvil 8700120457, Malleable Iron Pipe Fitting, Tee, 1/2\" NPT Female, Black Finish",
     "url": "https://hardwareandmoreee.com/collections/all/products/1-2-blk-tee-230227",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B0CB6MLFYR",
@@ -787,7 +787,7 @@
     "source_name": "heb",
     "title": "Paraffin Household Gulf Wax (Pack of 1)",
     "url": "https://www.heb.com/product-detail/gulf-wax-household-paraffin-wax/156662",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 21:00"
   },
   {
     "asin": "https://www.amazon.com/gp/product/B073X2MWXH",
@@ -819,6 +819,6 @@
     "source_name": "zoro",
     "title": "Tripp Lite Protect It! Three-Outlet Travel-Size Surge Suppressor",
     "url": "https://www.zoro.com/tripp-lite-null-modem-serial-rs232-cable-adapter-db9-female-female-10ft-p450-010/i/G6770199/",
-    "fechaDescarga": "28/11/2024, 19:49"
+    "fechaDescarga": "28/11/2024, 20:19"
   }
 ]
