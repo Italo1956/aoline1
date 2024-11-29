@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Filtros
         const roiMin = parseFloat(document.getElementById("roiMin").value) || 0;
-        const roiMax = parseFloat(document.getElementById("roiMax").value) || 100;
+        const roiMax = parseFloat(document.getElementById("roiMax").value) || 300;
         const priceMin = parseFloat(document.getElementById("priceMin").value) || 0;
         const priceMax = parseFloat(document.getElementById("priceMax").value) || Infinity;
         const tienda = document.getElementById("storeFilter").value;
@@ -163,14 +163,31 @@ document.addEventListener("DOMContentLoaded", () => {
           case "roiDesc":
               filtrados.sort((a, b) => b.roi - a.roi);
               break;
+          case "index":
+              filtrados.sort((a, b) => originales.length - 1);
+              break;
       }
 
       // Mostrar productos filtrados
       mostrarProductos(filtrados);
-  }   
-
+  }  
+  
        // Agregar evento al botón de aplicar filtros
     document.getElementById("applyFilters").addEventListener("click", aplicarFiltros);
+    document.getElementById('resetFilters').addEventListener('click', reset);
+
+    // Reset Filtros   
+     function reset() {
+        let originales = [...productosOriginales];
+        document.getElementById('roiMin').value = '';
+        document.getElementById('roiMax').value = '';
+        document.getElementById('priceMin').value = '';
+        document.getElementById('priceMax').value = '';
+        document.getElementById('storeFilter').value = '';
+        document.getElementById('sortBy').value = 'index';
+        // Mostrar productos sin filtros
+        mostrarProductos(originales);
+    };
 
     // Llamamos a la función para cargar los datos cuando la página esté lista
     cargarDatos();
