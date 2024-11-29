@@ -178,7 +178,7 @@ h1, h2 {
 
 /* Estilo para el botón de aplicar filtros */
 .filter-menu button {
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: #007bff;
     color: white;
     border: none;
