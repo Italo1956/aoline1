@@ -327,6 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
        // Agregar evento al botón de aplicar filtros
     document.getElementById("applyFilters").addEventListener("click", aplicarFiltros);
     document.getElementById('resetFilters').addEventListener('click', reset);
+    document.getElementById('updateData').addEventListener('click', actualizarDatos);
 
     // Reset Filtros   
      function reset() {
@@ -340,6 +341,52 @@ document.addEventListener("DOMContentLoaded", () => {
         // Mostrar productos sin filtros
         mostrarProductos(originales);
     };
+
+    // Función para actualizar los datos
+    async function actualizarDatos() {
+        try {
+            const updateButton = document.getElementById('updateData');
+            const originalText = updateButton.innerHTML;
+            updateButton.innerHTML = '⌛ Actualizando...';
+            updateButton.disabled = true;
+
+            // Ejecutar script.js mediante PHP
+            const respuesta = await fetch('ejecutar_script.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (respuesta.ok) {
+                console.log('Base de datos actualizada correctamente');
+                await cargarDatos(); // Recargar los datos
+                updateButton.innerHTML = '✅ Actualizado';
+                setTimeout(() => {
+                    updateButton.innerHTML = originalText;
+                    updateButton.disabled = false;
+                }, 2000);
+            } else {
+                console.error('Error al actualizar la base de datos');
+                updateButton.innerHTML = '❌ Error';
+                setTimeout(() => {
+                    updateButton.innerHTML = originalText;
+                    updateButton.disabled = false;
+                }, 2000);
+            }
+        } catch (error) {
+            console.error('Error en la actualización:', error);
+            const updateButton = document.getElementById('updateData');
+            updateButton.innerHTML = '❌ Error';
+            setTimeout(() => {
+                updateButton.innerHTML = '🔄 Actualizar';
+                updateButton.disabled = false;
+            }, 2000);
+        }
+    }
+
+    // Agregar el event listener para el botón de actualización
+    document.getElementById('updateData').addEventListener('click', actualizarDatos);
 
     // Llamamos a la función para cargar los datos cuando la página esté lista
     cargarDatos();
