@@ -1,8 +1,152 @@
-
-// Este script se ejecutará cuando el documento se haya cargado completamente
 document.addEventListener("DOMContentLoaded", () => {
-    
     let productosOriginales = []; // Almacena los datos originales para restablecer filtros
+    let currentPopup = null; // Para controlar el popup actual
+
+    // Función para mostrar el popup de vendedores
+    function mostrarPopupVendedores(vendorsData, event) {
+        if (currentPopup) {
+            currentPopup.remove();
+        }
+
+        const overlay = document.createElement('div');
+        overlay.className = 'popup-overlay';
+        overlay.style.display = 'flex';
+
+        const popup = document.createElement('div');
+        popup.className = 'popup';
+
+        // Variables para el arrastre
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        // Funciones para el arrastre
+        function setTranslate(xPos, yOffset) {
+            popup.style.transform = `translate(${xPos}px, ${yOffset}px)`;
+        }
+
+        function dragStart(e) {
+            if (e.type === "touchstart") {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            if (e.target === popup || e.target.tagName === 'H3') {
+                isDragging = true;
+            }
+        }
+
+        function dragEnd() {
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === "touchmove") {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+                setTranslate(currentX, currentY);
+            }
+        }
+
+        // Agregar eventos para arrastrar
+        popup.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+        popup.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
+        const closeButton = document.createElement('button');
+        closeButton.className = 'popup-close';
+        closeButton.innerHTML = '×';
+        closeButton.type = 'button';
+        closeButton.onclick = () => {
+            overlay.remove();
+            currentPopup = null;
+        };
+
+        const title = document.createElement('h3');
+        title.textContent = 'Lista de Vendedores';
+
+        const table = document.createElement('table');
+        table.className = 'vendor-table';
+
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+            <tr>
+                <th class="index-column">#</th>
+                <th>Vendedor</th>
+                <th class="center-align">Precio</th>
+                <th class="center-align">Feedback</th>
+                <th class="center-align">Rating</th>
+                <th class="center-align">Buy Box</th>
+                <th class="center-align">FBA</th>
+            </tr>
+        `;
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        
+        let vendors = [];
+        try {
+            vendors = Array.isArray(vendorsData) ? vendorsData : JSON.parse(vendorsData);
+        } catch (error) {
+            console.error('Error al parsear datos de vendedores:', error);
+            vendors = [];
+        }
+
+        vendors.forEach((vendor, index) => {
+            const tr = document.createElement('tr');
+            const vendorUrl = `https://www.amazon.com/sp?seller=${vendor.seller}`;
+            
+            tr.innerHTML = `
+                <td class="index-column">${index + 1}</td>
+                <td><a href="${vendorUrl}" target="_blank" style="text-decoration: none; color: #0066c0;">${vendor.seller || 'N/A'}</a></td>
+                <td class="center-align">$${typeof vendor.price === 'number' ? vendor.price.toFixed(2) : 'N/A'}</td>
+                <td class="center-align">${vendor.seller_feedback_count?.toLocaleString() || 'N/A'}</td>
+                <td class="center-align">${vendor.seller_positive_feedback_rating ? vendor.seller_positive_feedback_rating + '%' : 'N/A'}</td>
+                <td class="center-align">${vendor.is_buy_box_winner ? '✅' : '❌'}</td>
+                <td class="center-align">${vendor.is_fba ? '✅' : '❌'}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+
+        popup.appendChild(closeButton);
+        popup.appendChild(title);
+        popup.appendChild(table);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+        
+        currentPopup = overlay;
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.remove();
+                currentPopup = null;
+            }
+        });
+
+        event.stopPropagation();
+    }
 
     // Función para cargar el archivo JSON de productos
     async function cargarDatos() {
@@ -10,12 +154,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // Usamos fetch para leer los datos del archivo JSON
             const respuesta = await fetch('datos.json');        
             const datos = await respuesta.json(); // Convertir el contenido a un objeto JSON
+            datos.forEach((producto, index) => {
+                producto.indiceOriginal = index + 1;
+            });
             productosOriginales = datos; // Guardar copia original
             llenarOpcionesTienda(datos);
             mostrarProductos(datos);
                                  
             let vendor = [];
-            mostrarProductos(datos); // Llamamos a la función para mostrar los productos en el HTML
         } catch (error) {
             console.error('Error al cargar el archivo JSON:', error);
         }
@@ -53,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return; }
         
         // Recorremos todos los productos
-        for (const [index, producto] of datos.entries()) {
+        for (const producto of datos) {
             // Creamos una nueva tarjeta de producto
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
@@ -83,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div>Fecha: ${producto.fechaDescarga}</div>
                     <div class="header">
                     <h2 title="${producto.title}">${recortarTitulo(producto.title)}</h2>
-                    <span class="index">${index + 1}</span>
+                    <span class="index">${producto.indiceOriginal}</span>
                 </div>
                 <div class="images">
                     <div class="left">
@@ -108,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="https://keepa.com/#!product/1-${producto.asin.slice(-10)}" target="_blank" title="Estadisticas">
                         <div>BSR: #${producto.sales_rank}</div>
                         </a>
-                        <div>Vendedores: ${vendor.length}</div>
+                        <div class="vendor-count" style="cursor: pointer;">Vendedores: ${vendor.length}</div>
                     </div>
                 
                  </div>
@@ -123,6 +269,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Agregar la tarjeta de producto al contenedor
             container.appendChild(productCard);
+        
+            // Agregar el event listener para el popup de vendedores
+            const vendorCount = productCard.querySelector('.vendor-count');
+            vendorCount.addEventListener('click', (e) => {
+                mostrarPopupVendedores(vendor, e);
+            });
         
             
        
@@ -164,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
               filtrados.sort((a, b) => b.roi - a.roi);
               break;
           case "index":
-              filtrados.sort((a, b) => originales.length - 1);
+              filtrados.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
               break;
       }
 
