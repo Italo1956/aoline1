@@ -151,10 +151,10 @@ h1, h2 {
 /* Agrupador para cada par de etiqueta y entrada */
 .filter-group {
     display: flex;
-    /*flex-direction: column;*/ /* Cambia a fila en pantallas pequeñas */
-    /*align-items: flex-start;*/ /* Alinea el contenido a la izquierda */
+    /*flex-direction: column; /* Cambia a fila en pantallas pequeñas */
+    /*align-items: flex-start; /* Alinea el contenido a la izquierda */
     align-items: center; /* Mantiene el label y el input alineados verticalmente nuevo */
-    flex: 0 1 auto; /* Permite que los elementos se adapten según su contenido  nuevo*/
+    /*flex: 0 1 auto; /* Permite que los elementos se adapten según su contenido  nuevo*/
     gap: 5px; /* Espacio entre label e input */
 }
 
@@ -182,6 +182,7 @@ h1, h2 {
     height: 28px;
     padding: 4px 6px;
     -moz-appearance: textfield;
+    appearance: none;
 }
 
 /* Quitar flechas de inputs numéricos */
@@ -257,37 +258,38 @@ h1, h2 {
 
 /* Estilos Responsivos */
 @media (max-width: 500px) {
-    .filter-menu {
+    /*.filter-menu {
         display: flex;
         flex-direction: column;
         gap: 10px;
         width: 100%;
-    }
+    }*/
 
     /* Contenedor para ROI y Precio */
     .roi-group,
     .price-group {
         display: flex;
-        justify-content: center;
+        justify-content: left;
         gap: 10px;
         width: 100%;
+        padding-left: 10px;
     }
 
-    /* Agrupar ROI min y max */
-    .filter-group:nth-child(1),
+     Agrupar ROI min y max */
+    /*.filter-group:nth-child(1),
     .filter-group:nth-child(2) {
         display: inline-flex;
         width: calc(50% - 5px);
         margin: 0;
-    }
+    }*/
 
     /* Agrupar Precio min y max */
-    .filter-group:nth-child(3),
+    /*.filter-group:nth-child(3),
     .filter-group:nth-child(4) {
         display: inline-flex;
         width: calc(50% - 5px);
         margin: 0;
-    }
+    }*/
 
     /* Tienda y Ordenar */
     .filter-group:nth-child(5),
@@ -678,4 +680,3 @@ h1 {
         margin: 10px;  /* Reducir margen */
     }
 }
-
