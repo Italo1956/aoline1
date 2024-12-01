@@ -258,30 +258,30 @@ h1, h2 {
 /* Estilos Responsivos */
 @media (max-width: 500px) {
     .filter-menu {
-        /*flex-direction: column;*/ /* Cambia a diseño vertical aqui la puse*/
-        align-items: stretch; /* Estira los elementos para que ocupen todo el ancho */
-        gap: 10px; /* Reduce el espacio entre los filtros */
+        align-items: stretch;
+        gap: 10px;
     }
 
     .filter-group {
-        flex-direction: row; /* Mantiene label y input en línea aqui la quite*/
-        /*justify-content: space-between; /*nuevo*/
-        /*width: 100%; /* Ocupan todo el ancho disponible  nuevo*/
+        flex-direction: row;
+        justify-content: flex-start; /* Alinea a la izquierda */
+        width: 100%;
     }
 
-    /*.filter-menu input,
-    .filter-menu select {
-        /*width: calc(100% - 80px);*/  /*Reduce el ancho, respetando el espacio del label nuevo
-        width: 30%;  /* Ocupan todo el ancho en pantallas muy pequeñas  
-    }*/
+    /* Ajustes específicos para los selects de tienda y ordenar */
+    .filter-group:nth-last-child(2), /* Tienda */
+    .filter-group:last-child {       /* Ordenar */
+        justify-content: flex-start;
+    }
 
-    .filter-menu button {
-        margin-left: 0; /* Quita el margen izquierdo */
-        align-self: flex-end; /* Coloca el botón al final */
-        /*position: static; /* Cambia a flujo normal nuevo*/
-        /*margin-left: auto; /* Empuja el botón hacia la derecha nuevo*/
-        /*transform: none; /* Elimina el ajuste de posición nuevo*/
-        /*align-self: flex-end; /* Asegura que quede a la derecha nuevo*/
+    .filter-group select {
+        width: auto;  /* Permite que el ancho se ajuste al contenido */
+        min-width: 140px; /* Establece un ancho mínimo */
+        max-width: 70%;   /* Limita el ancho máximo */
+    }
+
+    .filter-menu label {
+        min-width: 70px; /* Ancho fijo para las etiquetas */
     }
 }
 
@@ -514,5 +514,25 @@ button.popup-close:hover {
     background-color: #cccccc;
     cursor: not-allowed;
     opacity: 0.7;
+}
+
+/* Estilo base para el título */
+h1 {
+    text-align: left;
+    margin: 20px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 16px;  /* Reducir tamaño de fuente */
+        white-space: nowrap;  /* Evitar salto de línea */
+        overflow: hidden;  /* Ocultar texto que se desborde */
+        text-overflow: ellipsis;  /* Mostrar ... si el texto es muy largo */
+        padding: 0 10px;  /* Reducir padding */
+        margin: 10px;  /* Reducir margen */
+    }
 }
 
