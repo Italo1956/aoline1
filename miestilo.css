@@ -308,28 +308,31 @@ h1, h2 {
     .button-group {
         display: flex;
         justify-content: center;
-        gap: 8px;  /* Reduce el espacio entre botones */
+        gap: 5px;  /* Reducir el espacio entre botones */
         width: 100%;
         margin-top: 10px;
-        flex-wrap: nowrap;  /* Evita que los botones se envuelvan */
+        flex-wrap: nowrap;  /* Forzar una sola fila */
+        padding: 0 5px;     /* Pequeño padding en los lados */
     }
 
     /* Botones */
     .button-group button {
         height: 28px;
-        padding: 0 10px;  /* Reduce el padding horizontal */
-        flex: 0 0 auto;  /* Evita que los botones se estiren */
+        padding: 0 8px;     /* Reducir padding horizontal */
+        flex: 0 0 auto;     /* Evitar que los botones se estiren */
+        white-space: nowrap;/* Evitar que el texto se rompa */
+        font-size: 11px;    /* Reducir tamaño de fuente */
     }
 
     #resetFilters,
     #updateData {
-        width: 70px;
-        min-width: 70px;  /* Asegura el ancho mínimo */
+        width: 60px;        /* Reducir ancho */
+        min-width: 60px;    /* Asegurar ancho mínimo */
     }
 
     #applyFilters {
-        width: 90px;
-        min-width: 90px;  /* Asegura el ancho mínimo */
+        width: 80px;        /* Reducir ancho */
+        min-width: 80px;    /* Asegurar ancho mínimo */
     }
 
     /* Contenedor principal como carrusel */
