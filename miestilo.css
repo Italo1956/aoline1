@@ -567,14 +567,14 @@ button.popup-close:hover {
 h1 {
     text-align: left;
     margin: 20px;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 1.2;
 }
 
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 500px) {
     h1 {
-        font-size: 16px;  /* Reducir tamaño de fuente */
+        font-size: 18px;  /* Reducir tamaño de fuente */
         white-space: nowrap;  /* Evitar salto de línea */
         overflow: hidden;  /* Ocultar texto que se desborde */
         text-overflow: ellipsis;  /* Mostrar ... si el texto es muy largo */
