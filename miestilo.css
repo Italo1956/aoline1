@@ -258,30 +258,77 @@ h1, h2 {
 /* Estilos Responsivos */
 @media (max-width: 500px) {
     .filter-menu {
-        align-items: stretch;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
-    }
-
-    .filter-group {
-        flex-direction: row;
-        justify-content: flex-start; /* Alinea a la izquierda */
         width: 100%;
     }
 
-    /* Ajustes específicos para los selects de tienda y ordenar */
-    .filter-group:nth-last-child(2), /* Tienda */
-    .filter-group:last-child {       /* Ordenar */
+    /* Contenedor para ROI y Precio */
+    .roi-group,
+    .price-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Agrupar ROI min y max */
+    .filter-group:nth-child(1),
+    .filter-group:nth-child(2) {
+        display: inline-flex;
+        width: calc(50% - 5px);
+        margin: 0;
+    }
+
+    /* Agrupar Precio min y max */
+    .filter-group:nth-child(3),
+    .filter-group:nth-child(4) {
+        display: inline-flex;
+        width: calc(50% - 5px);
+        margin: 0;
+    }
+
+    /* Tienda y Ordenar */
+    .filter-group:nth-child(5),
+    .filter-group:nth-child(6) {
+        width: 100%;
         justify-content: flex-start;
     }
 
-    .filter-group select {
-        width: auto;  /* Permite que el ancho se ajuste al contenido */
-        min-width: 140px; /* Establece un ancho mínimo */
-        max-width: 70%;   /* Limita el ancho máximo */
+    /* Ajustes para los inputs */
+    .filter-group input {
+        width: 70px;
     }
 
-    .filter-menu label {
-        min-width: 70px; /* Ancho fijo para las etiquetas */
+    /* Ajustes para los selects */
+    .filter-group select {
+        width: auto;
+        min-width: 140px;
+    }
+
+    /* Contenedor de botones */
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Botones */
+    .button-group button {
+        height: 28px;
+        padding: 0 15px;
+    }
+
+    #resetFilters,
+    #updateData {
+        width: 70px;
+    }
+
+    #applyFilters {
+        width: 90px;
     }
 }
 
