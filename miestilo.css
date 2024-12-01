@@ -293,42 +293,135 @@ h1, h2 {
     .filter-group:nth-child(5),
     .filter-group:nth-child(6) {
         width: 100%;
-        justify-content: flex-start;
+        display: flex;
+        justify-content: flex-start;  /* Alinea a la izquierda */
+        padding-left: 10px;  /* Agrega un poco de padding */
     }
 
-    /* Ajustes para los inputs */
-    .filter-group input {
-        width: 70px;
-    }
-
-    /* Ajustes para los selects */
     .filter-group select {
         width: auto;
         min-width: 140px;
+        margin-left: 0;  /* Elimina margen izquierdo */
     }
 
     /* Contenedor de botones */
     .button-group {
         display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;  /* Reduce el espacio entre botones */
         width: 100%;
         margin-top: 10px;
+        flex-wrap: nowrap;  /* Evita que los botones se envuelvan */
     }
 
     /* Botones */
     .button-group button {
         height: 28px;
-        padding: 0 15px;
+        padding: 0 10px;  /* Reduce el padding horizontal */
+        flex: 0 0 auto;  /* Evita que los botones se estiren */
     }
 
     #resetFilters,
     #updateData {
         width: 70px;
+        min-width: 70px;  /* Asegura el ancho mínimo */
     }
 
     #applyFilters {
         width: 90px;
+        min-width: 90px;  /* Asegura el ancho mínimo */
+    }
+
+    /* Contenedor principal como carrusel */
+    .container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        padding: 10px;
+        gap: 10px;
+        /* Ocultar scrollbar pero mantener funcionalidad */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    /* Ocultar scrollbar para Chrome/Safari/Opera */
+    .container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Ajustes para las tarjetas de producto */
+    .product-card {
+        flex: 0 0 auto;
+        width: calc(50% - 15px);  /* Dos tarjetas por vista, con espacio entre ellas */
+        scroll-snap-align: start;
+        margin: 0;
+        box-sizing: border-box;
+        min-width: 160px;  /* Ancho mínimo para evitar tarjetas muy estrechas */
+    }
+
+    /* Ajustar el tamaño de las imágenes para dos tarjetas */
+    .product-card .images img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Indicadores de desplazamiento */
+    .scroll-indicator {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        font-size: 20px;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    .scroll-indicator:hover {
+        opacity: 1;
+    }
+
+    .scroll-left {
+        left: 5px;
+    }
+
+    .scroll-right {
+        right: 5px;
+    }
+
+    /* Animación suave para el desplazamiento */
+    .container {
+        scroll-behavior: smooth;
+    }
+
+    /* Indicador de posición */
+    .scroll-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+    }
+
+    .dot.active {
+        background: #007bff;
     }
 }
 

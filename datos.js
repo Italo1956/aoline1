@@ -390,4 +390,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Llamamos a la función para cargar los datos cuando la página esté lista
     cargarDatos();
+
+    // Agregar después de mostrarProductos()
+    function initializeCarousel() {
+        if (window.innerWidth <= 500) {
+            const container = document.querySelector('.container');
+            const cards = document.querySelectorAll('.product-card');
+            
+            // Crear indicadores de desplazamiento
+            const leftIndicator = document.createElement('div');
+            const rightIndicator = document.createElement('div');
+            leftIndicator.className = 'scroll-indicator scroll-left';
+            rightIndicator.className = 'scroll-indicator scroll-right';
+            leftIndicator.innerHTML = '‹';
+            rightIndicator.innerHTML = '›';
+
+            // Agregar eventos de desplazamiento
+            leftIndicator.onclick = () => {
+                container.scrollBy({
+                    left: -container.offsetWidth,
+                    behavior: 'smooth'
+                });
+            };
+
+            rightIndicator.onclick = () => {
+                container.scrollBy({
+                    left: container.offsetWidth,
+                    behavior: 'smooth'
+                });
+            };
+
+            document.body.appendChild(leftIndicator);
+            document.body.appendChild(rightIndicator);
+
+            // Mostrar/ocultar indicadores según la posición
+            container.addEventListener('scroll', () => {
+                leftIndicator.style.display = container.scrollLeft > 0 ? 'flex' : 'none';
+                rightIndicator.style.display = 
+                    container.scrollLeft < (container.scrollWidth - container.offsetWidth) ? 'flex' : 'none';
+            });
+        }
+    }
+
+    // Llamar a la función después de cargar los productos
+    window.addEventListener('resize', initializeCarousel);
+    document.addEventListener('DOMContentLoaded', initializeCarousel);
 });
