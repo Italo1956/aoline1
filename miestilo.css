@@ -126,27 +126,43 @@ h1, h2 {
 
 /* Menú de filtros, contenedor */
 .filter-menu-container {
+    display: flex;
+    flex-wrap: wrap; 
     position: sticky;
     top: 0;
-    background-color: #fff;
+    background-color: #d3bebe;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     /*align-content: center;*/
+    /*align-items: center;*/
+    justify-content: center;
+    gap: 10px 
 }
-
 /* Filtros en una fila */
 .filter-menu {
     display: flex;
-    flex-wrap: wrap; /* nowrap asegura que los filtros estén en una sola fila */
-    gap: 15px;
-    /*justify-content: space-between;*/ /* Distribuye espacio entre filtros */
+    flex-wrap: wrap;  /*nowrap asegura que los filtros estén en una sola fila */
+    gap: 10px;
+    justify-content: space-between; /* Distribuye espacio entre filtros */
     align-items: center;  /* Centra verticalmente los elementos nuevo */
     justify-content: center; /* Centra horizontalmente los filtros nuevo*/
-    /*position: relative; /* Para manejar el botón de forma separada nuevo*/
-    /*max-width: 1200px;
-    width: 100%;*/
+    position: relative; /*Para manejar el botón de forma separada nuevo*/
+    max-width: 1200px;
+    width: 100%;
 }
+
+/*.roi-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+.price-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+}*/
 
 /* Agrupador para cada par de etiqueta y entrada */
 .filter-group {
@@ -201,7 +217,7 @@ h1, h2 {
 
 /* Estilo para el botón de aplicar filtros */
 .filter-menu button {
-    padding: 0 15px;
+    /*padding: 0 15px;*/
     height: 28px;
     background-color: #007bff;
     color: white;
@@ -210,9 +226,10 @@ h1, h2 {
     cursor: pointer;
     font-size: 12px;
     transition: background-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;/*inline-flex;*/
+    /*flex-wrap: wrap;*/
+    /*align-items: center;
+    justify-content: center;*/
     box-sizing: border-box;
 }
 
@@ -223,36 +240,36 @@ h1, h2 {
 /* Responsividad para tamaños específicos */
 @media (min-width: 1240px) {
     .container {
-        grid-template-columns: repeat(5, 200px); /* 5 productos por fila */
+        grid-template-columns: repeat(5, 220px); /* 5 productos por fila */
         gap: 50px;
     }
 }
 
 @media (min-width: 990px) and (max-width: 1239px) {
     .container {
-        grid-template-columns: repeat(4, 200px); /* 4 productos por fila */
-        gap: 45px;
+        grid-template-columns: repeat(4, 220px); /* 4 productos por fila */
+        gap: 50px;
     }
 }
 
 @media (min-width: 740px) and (max-width: 989px) {
     .container {
-        grid-template-columns: repeat(3, 200px); /* 3 productos por fila */
-        gap: 45px;
+        grid-template-columns: repeat(3, 220px); /* 3 productos por fila */
+        gap: 50px;
     }
 }
 
 @media (min-width: 500px) and (max-width: 739px) {
     .container {
-        grid-template-columns: repeat(2, 200px); /* 2 productos por fila */
-        gap: 45px;
+        grid-template-columns: repeat(2, 220px); /* 2 productos por fila */
+        gap: 50px;
     }
 }
 
 @media (max-width: 499px) {
     .container {
-        grid-template-columns: 1fr; /* 1 producto por fila */
-        gap: 25px;
+        grid-template-columns: repeat(1, 220px);; /* 1 producto por fila */
+        gap: 40px;
     }
 }
 
@@ -304,6 +321,7 @@ h1, h2 {
         width: auto;
         min-width: 140px;
         margin-left: 0;  /* Elimina margen izquierdo */
+        justify-content: flex-start;  /* Alinea a la izquierda */
     }
 
     /* Contenedor de botones */
@@ -541,9 +559,9 @@ button.popup-close:hover {
 /* Hacer que el popup y la tabla sean responsivos */
 @media (max-width: 768px) {
     .popup {
-        min-width: 95%;
+        min-width: 65%;
         max-width: 95%;
-        margin: 10px;
+        margin: 5px;
         padding: 10px;
     }
 
@@ -593,6 +611,18 @@ button.popup-close:hover {
         font-size: 12px;
         margin-bottom: 8px;
         padding-right: 20px;
+    }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 20px;  /* Reducir tamaño de fuente */
+        white-space: nowrap;  /* Evitar salto de línea */
+        overflow: hidden;  /* Ocultar texto que se desborde */
+        text-overflow: ellipsis;  /* Mostrar ... si el texto es muy largo */
+        padding: 0 10px;  /* Reducir padding */
+        margin: 10px;  /* Reducir margen */
     }
 }
 
@@ -669,14 +699,4 @@ h1 {
     line-height: 1.2;
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 500px) {
-    h1 {
-        font-size: 20px;  /* Reducir tamaño de fuente */
-        white-space: nowrap;  /* Evitar salto de línea */
-        overflow: hidden;  /* Ocultar texto que se desborde */
-        text-overflow: ellipsis;  /* Mostrar ... si el texto es muy largo */
-        padding: 0 10px;  /* Reducir padding */
-        margin: 10px;  /* Reducir margen */
-    }
-}
+
