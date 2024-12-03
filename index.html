@@ -2,79 +2,88 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>AOLINE3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos para Arbitraje Online</title>
     <link rel="icon" href="star.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="miestilo.css">
 </head>
 <body>
-<div class="header">  
-    <h1>AOLINE3</h1>
+    <h1>Productos para Arbitraje Online</h1>
     <div class="filtros-header">
-        <h2 class="filtros-toggle" style="cursor: pointer;">Filtros: ▼</h2>
         <div class="contador-productos" title="Cantidad de productos">0</div>
+        <h2 class="filtros-toggle" style="cursor: pointer;">Filtros ▼</h2>
     </div>
-    <div class="filter-menu-container">
-        <div class="filter-menu">
-            <!-- Filtros de ROI -->
-            <div class="roi-group">
-                <label for="roiMin">ROI mín:</label>
-                <input type="number" id="roiMin" placeholder="0" title="ROI mínimo %" />
-                <label for="roiMax">ROI Máx:</label>
-                <input type="number" id="roiMax" placeholder="300" title="ROI máximo %" />
-            </div>
+    <!-- <div class="filter-menu-container"></div> -->
+    <div class="filter-menu">
+       <div class="roi-group">
+        <div class="filter-group">  
+        <label for="roiMin" title="Retorno porcentual mínimo por inversión">ROI mín:</label>
+        <input type="number" id="roiMin" placeholder="0" title="Retorno porcentual mínimo por inversión" />
+    </div>
+    <div class="filter-group">
+        <label for="roiMax" title="Retorno porcentual máximo por inversión">ROI Máx:</label>
+        <input type="number" id="roiMax" placeholder="300" title="Retorno porcentual máximo por inversión" />
+    </div>
+</div>
+ <div class="price-group">
+    <div class="filter-group">
+        <label for="priceMin" title="Precio mínimo de Tienda">Precio mín:</label>
+        <input type="number" id="priceMin" placeholder="0" step="0.01" title="Precio mínimo de Tienda"/>
+    </div> 
+    <div class="filter-group">
+        <label for="priceMax" title="Precio máximo de Tienda">Precio Máx:</label>
+        <input type="number" id="priceMax" placeholder="1000" step="0.01" title="Precio máximo de Tienda"/>
+    </div>
+ </div>
+    <div class="filter-group">
+        <label for="storeFilter">Tienda:</label>
+        <select id="storeFilter">
+            <option value="">Todas</option>
+            <!-- Se llenarán dinámicamente las opciones -->
+        </select>
+    </div>   
+    <div class="filter-group">
+        <label for="sortBy">Ordenar:</label>
+        <select id="sortBy">
+            <option value="priceAsc">Precio Ascendente</option>
+            <option value="priceDesc">Precio Descendente</option>
+            <option value="roiAsc">ROI Ascendente</option>
+            <option value="roiDesc">ROI Descendente</option>
+            <option value="index">Indice</option>
+        </select>
+    </div>   
+    <button id="resetFilters">Reset</button>   
+    <button id="applyFilters">Aplicar Filtros</button>
+    <button id="updateData" title="Actualizar base de datos">🔄 Update</button>
+        
+    </div>
+   
+    <div class="container">
+        <!-- Los productos se cargarán aquí -->
+    </div>
 
-            <!-- Filtros de Precio y Sales Rank -->
-            <div class="price-group">
-                <label for="priceMin">Precio mín:</label>
-                <input type="number" id="priceMin" placeholder="0" step="0.01"/>
-                <label for="priceMax">Precio Máx:</label>
-                <input type="number" id="priceMax" placeholder="1000" step="0.01"/>
-            </div>
-
-            <!-- Filtros de Tienda y Ordenamiento -->
-            <div class="filter-group">
-                <label for="storeFilter">Tienda:</label>
-                <select id="storeFilter">
-                    <option value="">Todas</option>
-                </select>
-
-                <label for="sortBy">Ordenar:</label>                           
-                <select id="sortBy">
-                    <option value="salesRankAsc">Sales Rank ↑</option>
-                    <option value="salesRankDesc">Sales Rank ↓</option>
-                    <option value="roiDesc">ROI ↓</option>
-                    <option value="roiAsc">ROI ↑</option>
-                    <option value="priceAsc">Precio ↑</option>
-                    <option value="priceDesc">Precio ↓</option>
-                </select>
-            </div>
-
-            <!-- Botones -->
-            <div class="button-container">
-                <button id="resetFilters">Reset</button>   
-                <button id="applyFilters">Aplicar</button>
-                <button id="updateData" title="Actualizar datos">🔄</button>   
-            </div>
+    <!-- Popup de vendedores -->
+    <div id="seller-popup" class="popup hidden">
+        <div class="popup-header">
+            <h3>Lista de Vendedores</h3>
+            <button class="popup-close">×</button>
         </div>
-    </div>  
-</div>    
-
-<div class="container">
-    <!-- Productos -->
-</div>
-
-<!-- Popup de vendedores -->
-<div id="seller-popup" class="popup hidden">
-    <div class="popup-header">
-        <span>Vendedores</span>
-        <button id="close-popup">×</button>
+        <table class="vendor-table">
+            <thead>
+                <tr>
+                    <th class="index-column">#</th>
+                    <th>Vendedor</th>
+                    <th class="center-align">Precio</th>
+                    <th class="center-align">Feedback</th>
+                    <th class="center-align">Rating</th>
+                    <th class="center-align">Buy Box</th>
+                    <th class="center-align">FBA</th>
+                </tr>
+            </thead>
+            <tbody id="vendor-list"></tbody>
+        </table>
     </div>
-    <div class="popup-content">
-        <ul id="seller-list"></ul>
-    </div>
-</div>
 
-<script type="module" src="datos.js"></script>
+    <script src="datos.js"></script>
 </body>
 </html>

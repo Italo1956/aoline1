@@ -1,59 +1,61 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
+import schedule from 'node-schedule'; // Importar la librería
 
-// Función para obtener la fecha y hora actuales en formato "DD-MM-AAAA HH:MM"
 function obtenerFechaYHora() {
     const ahora = new Date();
-    const dia = ahora.getDate().toString().padStart(2, '0');
-    const mes = (ahora.getMonth() + 1).toString().padStart(2, '0');
-    const año = ahora.getFullYear();
-    const horas = ahora.getHours().toString().padStart(2, '0');
-    const minutos = ahora.getMinutes().toString().padStart(2, '0');
-    return `${dia}-${mes}-${año} ${horas}:${minutos}`;
+    return ahora.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
-// Función para actualizar los datos
 function actualizarDatos(nuevosProductos, productosExistentes) {
-    nuevosProductos.forEach((productoNuevo) => {
-        const productoExistente = productosExistentes.find((producto) => producto.asin === productoNuevo.asin);
+    const productosMap = new Map();
 
- // Agregar la fecha y hora de descarga al producto
- const fechaYHoraDescarga = obtenerFechaYHora();
- productoNuevo.fechaDescarga = fechaYHoraDescarga;       
-
-        if (!productoExistente) {
-            productosExistentes.push(productoNuevo); // Agregar producto nuevo si no existe
-        } else if (productoExistente.source_name !== productoNuevo.source_name || productoExistente.roi !== productoNuevo.roi) {
-            productosExistentes.push(productoNuevo); // Agregar si hay diferencias
-        }
+    // Agregar productos existentes al Map
+    productosExistentes.forEach((producto) => {
+        const clave = `${producto.asin}-${producto.roi}-${producto.source_name}`;
+        productosMap.set(clave, producto);
     });
 
-    return productosExistentes;
+    // Agregar o actualizar productos nuevos en el Map
+    nuevosProductos.forEach((productoNuevo) => {
+        const clave = `${productoNuevo.asin}-${productoNuevo.roi}-${productoNuevo.source_name}`;
+        productoNuevo.fechaDescarga = obtenerFechaYHora();
+        productosMap.set(clave, productoNuevo);
+    });
+
+    return Array.from(productosMap.values());
 }
-// Función para descargar y guardar los datos
+
 async function obtenerYGuardarDatos() {
     try {
-        // Descarga los nuevos productos
+        console.log(`[INFO] Iniciando descarga de datos: ${new Date().toLocaleString()}`);
         const respuesta = await fetch('https://server.nepeto.com/main_page_products');
         const nuevosProductos = await respuesta.json();
 
-        // Leer datos existentes desde el archivo
         let datosExistentes = [];
         if (fs.existsSync('datos.json')) {
-            const contenidoArchivo = fs.readFileSync('datos.json', 'utf8');
-            datosExistentes = JSON.parse(contenidoArchivo);
+            try {
+                const contenidoArchivo = fs.readFileSync('datos.json', 'utf8');
+                datosExistentes = JSON.parse(contenidoArchivo);
+            } catch (error) {
+                console.error('[ERROR] Error al leer o parsear el archivo "datos.json":', error);
+                datosExistentes = [];
+            }
         }
 
-        // Actualizar datos existentes con los nuevos
         const datosActualizados = actualizarDatos(nuevosProductos, datosExistentes);
-
-        // Guardar los datos actualizados en el archivo
         fs.writeFileSync('datos.json', JSON.stringify(datosActualizados, null, 2));
-        console.log('Datos actualizados en "datos.json"');
+        console.log('[INFO] Datos actualizados en "datos.json"');
     } catch (error) {
-        console.error('Error al obtener o guardar el archivo JSON:', error);
+        console.error('[ERROR] Error al obtener o guardar el archivo JSON:', error);
     }
 }
 
-// Ejecutar la función principal
+// Programar ejecución cada 60 minutos
+schedule.scheduleJob('0 * * * *', async () => {
+    console.log(`[INFO] Ejecutando tarea programada: ${new Date().toLocaleString()}`);
+    await obtenerYGuardarDatos();
+});
+
+// Ejecutar inmediatamente al iniciar
 obtenerYGuardarDatos();
