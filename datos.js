@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para obtener el nombre del vendedor
     async function getSellerName(sellerId) {
         try {
-            const name = sellerNames[sellerId] || sellerId;
-            console.log(`Seller ID: ${sellerId}, Name: ${name}`);
-            return name;
+            const response = await fetch(`http://localhost:3000/seller-name?seller=${sellerId}`);
+            const data = await response.json();
+            return data.name;
         } catch (error) {
             console.error('Error al obtener nombre del vendedor:', error);
             return sellerId;
@@ -381,6 +381,12 @@ document.addEventListener("DOMContentLoaded", () => {
               break;
           case "priceDesc":
               filtrados.sort((a, b) => b.price - a.price);
+              break;
+          case "roiAsc":
+              filtrados.sort((a, b) => a.roi - b.roi);  // Ordenar ROI ascendente
+              break;
+          case "roiDesc":
+              filtrados.sort((a, b) => b.roi - a.roi);  // Ordenar ROI descendente
               break;
           case "salesRankAsc":
               filtrados.sort((a, b) => {
