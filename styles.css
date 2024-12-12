@@ -7,17 +7,9 @@ body {
     font-size: 12px;
 }
 
-/* Estilo base para el título */
-h1 {
-    text-align: left;
-    margin: 20px;
-    font-size: 30px;
-    line-height: 1.2;
-}
-
-/* Estilo para el header de filtros y contador */
+/* Header */
 .header {
-    z-index: 1000;
+    z-index: 3000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 100%;
     position: sticky;
@@ -25,9 +17,16 @@ h1 {
     background-color: #f8f8f8;
 }
 
+h1 {
+    text-align: left;
+    margin: 20px;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
 .filtros-header {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     align-items: center;
     gap: 0px;
     margin: 0px;
@@ -37,10 +36,10 @@ h1 {
 .filtros-header h2 {
     margin: 0px 20px;
     font-size: 20px;
-    order: 1;
+    cursor: pointer;
 }
 
-.filtros-header .contador-productos {
+.contador-productos {
     width: 35px;
     height: 28px;
     background-color: #f8f8f8;
@@ -52,12 +51,30 @@ h1 {
     font-size: 12px;
     color: #333;
     user-select: none;
-    order: 2;
     margin-right: 20px;
 }
 
-/* Estilo para el menú de filtros colapsable */
+/* Menú de filtros */
+.filter-menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 120px;
+    background-color: #d3bebe;
+    z-index: 2999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+}
+
 .filter-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
     max-height: 1000px;
     opacity: 1;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -69,7 +86,51 @@ h1 {
     opacity: 0;
 }
 
-/* Contenedor principal */
+.filter-menu input,
+.filter-menu select {
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    height: 28px;
+    box-sizing: border-box;
+}
+
+.filter-menu input {
+    width: 50px;
+}
+
+.filter-menu select {
+    width: 110px;
+}
+
+.filter-menu select:not(#sortBy) {
+    width: 150px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-container button {
+    height: 28px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0 15px;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor de productos */
 .container {
     display: grid;
     gap: 20px;
@@ -77,6 +138,7 @@ h1 {
     justify-content: center;
     position: relative;
     z-index: 1;
+    margin-top: 20px;
 }
 
 /* Tarjetas de producto */
@@ -88,13 +150,18 @@ h1 {
     width: 220px;
     border: 1px solid black;
     position: relative;
+    z-index: 1;
 }
 
 .product-card .header {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    box-shadow: none;
+    width: auto;
 }
 
 .product-card .header h2 {
@@ -122,726 +189,78 @@ h1 {
     font-size: 18px;
     font-weight: bold;
     color: green;
-    position: relative;
 }
 
-/* Íconos en la tarjeta */
-.gshop-icon {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    transition: transform 0.2s ease-in-out;
-}
-
-.gshop-icon img {
+/* Popup de vendedores */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    border: 1px solid #ccc;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    pointer-events: none;
 }
 
-.gshop-icon:hover img {
-    transform: scale(1.2);
-}
-
-/* Modal popup */
 .popup {
-    min-width: 560px;
-    max-width: 72%;
-    background: #f8f8f8;
-    padding: 16px;
-    border-radius: 8px;
-    max-height: 64vh;
-    overflow-y: auto;
+    pointer-events: auto;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: move;
-    user-select: none;
-    z-index: 1001;
-}
-
-.popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.popup-content {
+    background: white;
+    min-width: 560px;
+    max-width: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 80vh;
     overflow-y: auto;
-    max-height: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.popup-close:hover {
+    background: #ff6666;
 }
 
 .popup.hidden {
     display: none;
 }
 
-/* Menú de filtros, contenedor */
-.filter-menu-container {
+.popup-titlebar {
+    padding: 10px;
+    background: #f0f0f0;
     display: flex;
-    flex-wrap: wrap; 
-    position: sticky;
-    top: 0;
-    background-color: #d3bebe;
-    z-index: 999;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 10px;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px;
-}
-
-/* Filtros en una fila */
-.filter-menu {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
     justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    cursor: move;
+    border-bottom: 1px solid #ddd;
 }
 
-/* Agrupador para cada par de etiqueta y entrada */
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Etiquetas y entradas de los filtros */
-.filter-menu label {
-    font-weight: bold;
-}
-
-.filter-menu input,
-.filter-menu select {
-    padding: 4px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-    height: 28px;
-    box-sizing: border-box;
-}
-
-.filter-menu input {
-    width: 50px;
-}
-
-.filter-menu input[type="number"] {
-    width: 50px;
-    height: 28px;
-    padding: 4px 6px;
-    -moz-appearance: textfield;
-    appearance: none;
-}
-
-/* Quitar flechas de inputs numéricos */
-.filter-menu input[type="number"]::-webkit-outer-spin-button,
-.filter-menu input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+.popup-titlebar h3 {
     margin: 0;
+    padding: 0;
 }
 
-.filter-menu select {
-    width: 110px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.draggable {
+    user-select: none;
 }
 
-/* Estilo para el botón de aplicar filtros */
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.button-group button {
-    padding: 0 15px;
-    height: 28px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-.button-group button:hover {
-    background-color: #0056b3;
-}
-
-.filter-menu button {
-    height: 28px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s;
-    box-sizing: border-box;
-}
-
-.filter-menu button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsividad para tamaños específicos */
-@media (min-width: 1253px) {
-    .container {
-        grid-template-columns: repeat(5, 220px);
-        gap: 30px;
-    }
-
-    /* Contenedor principal de filtros en una sola fila */
-    .filter-menu {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 5px;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-
-    /* Grupos de inputs en línea */
-    .roi-group,
-    .price-group,
-    .rank-group {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-        margin: 0 2px;
-    }
-
-    /* Grupo de selects */
-    .filter-group {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-        margin: 0 2px;
-    }
-
-    /* Grupo de botones */
-    .button-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-        margin: 0 2px;
-    }
-
-    /* Tamaños específicos */
-    .filter-menu input {
-        width: 50px;
-    }
-
-    #sortBy {
-        width: 110px;
-    }
-
-    .filter-menu select:not(#sortBy) {
-        width: 150px;
-    }
-}
-
-@media (min-width: 990px) and (max-width: 1252px) {
-    .container {
-        grid-template-columns: repeat(4, 220px);
-        gap: 30px;
-    }
-
-    /*.filter-menu button {
-        padding: 0 5px;
-        height: 28px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: background-color 0.3s;
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-    }*/
-
-    .filter-menu {
-        flex-wrap: wrap;
-        padding: 5px 0;
-        gap: 3px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .filter-menu-container {
-        padding: 5px 10px;
-        margin: 2px 5px;
-        gap: 2px;
-    }
-}
-
-@media (min-width: 740px) and (max-width: 989px) {
-    .container {
-        grid-template-columns: repeat(3, 220px);
-        gap: 50px;
-    }
-
-    .filter-menu-container {
-        padding: 5px 10px;
-        margin: 2px 5px;
-        gap: 2px;
-    }
-
-    .filter-menu {
-        flex-wrap: wrap;
-        padding: 5px 0;
-        gap: 3px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .popup {
-        min-width: 65%;
-        max-width: 95%;
-        margin: 5px;
-        padding: 10px;
-    }
-
-    .vendor-table {
-        font-size: 12px;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .vendor-table th,
-    .vendor-table td {
-        padding: 6px 4px;
-    }
-}
-
-@media (min-width: 500px) and (max-width: 739px) {
-    .container {
-        grid-template-columns: repeat(2, 220px);
-        gap: 50px;
-    }
-
-    /* Ajuste del menú de filtros */
-    .filter-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-    }
-
-    /* Primera fila: ROI min, ROI max, Precio min */
-    .roi-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Mover precio min a la primera fila */
-    #priceMin,
-    label[for="priceMin"] {
-        order: 3;
-    }
-
-    /* Segunda fila: Precio max, Rank min, Rank max */
-    .price-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Ajustar el orden de los elementos de rank */
-    .price-group label[for="priceMax"],
-    #priceMax {
-        order: 1;
-    }
-
-    .price-group label[for="salesRankMin"],
-    #salesRankMin {
-        order: 2;
-    }
-
-    .price-group label[for="salesRankMax"],
-    #salesRankMax {
-        order: 3;
-    }
-
-    /* Tercera fila: Selects */
-    .filter-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Cuarta fila: Botones */
-    .button-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .button-container button {
-        width: auto;
-        min-width: 80px;
-        margin: 0 5px;
-    }
-
-    /* Ajustes específicos para inputs */
-    .filter-menu input {
-        width: 70px !important;
-    }
-
-    /* Ajustes específicos para selects */
-    .filter-menu select {
-        width: 120px !important;
-    }
-
-    /* Ajustar el orden de los elementos */
-    .price-group label[for="salesRankMin"],
-    .price-group label[for="salesRankMax"],
-    #salesRankMin,
-    #salesRankMax {
-        order: 4;
-    }
-}
-
-@media (max-width: 499px) {
-    h1 {
-        font-size: 20px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 0 10px;
-        margin: 10px;
-    }
-    
-    /*.filter-menu {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 10px;
-        justify-content: space-between;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }*/
-    
-    .popup {
-        min-width: 98%;
-        margin: 5px;
-        padding: 8px;
-    }
-
-    .vendor-table {
-        font-size: 11px;
-    }
-
-    .vendor-table th,
-    .vendor-table td {
-        padding: 4px 2px;
-    }
-
-    .vendor-table .index-column {
-        width: 30px;
-    }
-
-    button.popup-close {
-        width: 18px;
-        height: 18px;
-        min-width: 18px;
-        min-height: 18px;
-        font-size: 12px;
-    }
-
-    .popup h3 {
-        font-size: 12px;
-        margin-bottom: 8px;
-        padding-right: 20px;
-    }
-
-    .container {
-        grid-template-columns: repeat(1, 220px);
-        gap: 40px;
-    }
-    
-    /*.roi-group,
-    .price-group {
-        display: flex;
-        justify-content: left;
-        gap: 10px;
-        width: 100%;
-        padding-left: 10px;
-    }
-
-    .filter-group:nth-child(5),
-    .filter-group:nth-child(6) {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 10px;
-    }
-
-    .filter-group select {
-        width: auto;
-        min-width: 140px;
-        margin-left: 0;
-        justify-content: flex-start;
-    }
-
-    .button-group {
-        display: flex;
-        justify-content: center;
-        gap: 5px;
-        width: 100%;
-        margin-top: 10px;
-        flex-wrap: nowrap;
-        padding: 0 5px;
-    }
-
-    .button-group button {
-        height: 28px;
-        padding: 0 8px;
-        flex: 0 0 auto;
-        white-space: nowrap;
-        font-size: 11px;
-    }*/
-
-    #resetFilters,
-    #updateData {
-        width: 60px;
-        min-width: 60px;
-    }
-
-    #applyFilters {
-        width: 80px;
-        min-width: 80px;
-    }
-
-    .container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        padding: 10px;
-        gap: 10px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        scroll-snap-type: x proximity;
-    }
-
-    .container::-webkit-scrollbar {
-        display: none;
-    }
-
-    .product-card {
-        flex: 0 0 auto;
-        width: calc(50% - 15px);
-        scroll-snap-align: start;
-        margin: 0;
-        box-sizing: border-box;
-        min-width: 220px;
-    }
-
-    .product-card .images img {
-        width: 70px;
-        height: 70px;
-    }
-
-    .scroll-indicator {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 30px;
-        height: 30px;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 100;
-        font-size: 20px;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-    }
-
-    .scroll-indicator:hover {
-        opacity: 1;
-    }
-
-    .scroll-left {
-        left: 5px;
-    }
-
-    .scroll-right {
-        right: 5px;
-    }
-
-    .container {
-        scroll-behavior: smooth;
-    }
-
-    .scroll-dots {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 10px;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #ccc;
-    }
-
-    .dot.active {
-        background: #007bff;
-    }
-
-    /* Ajuste del menú de filtros */
-    .filter-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-    }
-
-    /* Primera fila: ROI min y ROI max */
-    .roi-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Segunda fila: Precio min y Precio max */
-    .price-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Tercera fila: Rank min y Rank max */
-    .rank-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Cuarta fila: Selects */
-    .filter-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Quinta fila: Botones */
-    .button-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    /* Ajustes específicos para inputs */
-    .filter-menu input {
-        width: 80px !important;
-    }
-
-    /* Ajustes específicos para selects */
-    .filter-menu select {
-        width: 120px !important;
-    }
-
-    /* Ajustes para los botones */
-    .button-container button {
-        width: auto;
-        min-width: 70px;
-        margin: 0 5px;
-    }
-}
-
-@media (max-width: 320px) {
-    .popup {
-        padding: 5px;
-    }
-
-    .vendor-table {
-        font-size: 10px;
-    }
-
-    .vendor-table th,
-    .vendor-table td {
-        padding: 3px 2px;
-    }
-}
-
-.product-card.clone {
-    pointer-events: none;
-}
-
-/* Estilos para el popup de vendedores */
-.popup-overlay {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.5);
-   display: none;
-   justify-content: center;
-   align-items: center;
-   z-index: 1000;
-}
-
-/* Estilos para la tabla de vendedores */
+/* Tabla de vendedores */
 .vendor-table {
     width: 100%;
     border-collapse: collapse;
@@ -882,90 +301,244 @@ h1 {
     text-align: center;
 }
 
-/* Botón de cierre del popup */
-button.popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    min-height: 20px;
-    padding: 0;
-    margin: 0;
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 1;
-    z-index: 1002;
+/* Responsive */
+@media (min-width: 1253px) {
+    .container {
+        grid-template-columns: repeat(5, 220px);
+        gap: 30px;
+    }
 }
 
-button.popup-close:hover {
-    background-color: #ff6666;
+@media (min-width: 990px) and (max-width: 1252px) {
+    .container {
+        grid-template-columns: repeat(4, 220px);
+        gap: 30px;
+    }
 }
 
-/* Título del popup */
-.popup h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    padding-right: 24px;
-    cursor: move;
-    font-size: 14px;
+@media (min-width: 740px) and (max-width: 989px) {
+    .container {
+        grid-template-columns: repeat(3, 220px);
+        gap: 50px;
+    }
 }
 
-/* Estados específicos para el botón de actualización */
-#updateData:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    opacity: 0.7;
+@media (min-width: 500px) and (max-width: 739px) {
+    .container {
+        grid-template-columns: repeat(2, 220px);
+        gap: 30px;
+    }
+
+    .filter-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    /* Primera fila: ROI y Precio */
+    .roi-group,
+    .price-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Segunda fila: Rank */
+    .rank-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Tercera fila: Tienda y Ordenar */
+    .filter-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Cuarta fila: Botones */
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* Ajustes de tamaños */
+    .filter-menu input {
+        width: 70px;
+    }
+
+    .filter-menu select {
+        width: 130px;
+    }
+
+    .filter-menu label {
+        min-width: 80px;
+        text-align: right;
+        padding-right: 5px;
+    }
 }
 
-#updateData.success {
-    background-color: #28a745;
-}
+@media (max-width: 499px) {
+    .container {
+        grid-template-columns: repeat(2, 220px);
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        padding: 10px;
+        gap: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
 
-#updateData.error {
-    background-color: #dc3545;
-}
+    .container::-webkit-scrollbar {
+        display: none;
+    }
 
-#sortBy {
-    width: 110px;
-}
+    .product-card {
+        flex: 0 0 220px;
+        min-width: 220px;
+        scroll-snap-align: start;
+        margin: 0 5px;
+        /*box-sizing: border-box;*/
+    }
 
-/* Y mantener el ancho original para el resto de selects */
-.filter-menu select:not(#sortBy) {
-    width: 150px;
-}
+    .scroll-indicator {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        font-size: 24px;
+        opacity: 1;
+        transition: opacity 0.3s;
+        user-select: none;
+    }
 
-/* Ajustar los botones para que estén alineados */
-.button-container {
+    .scroll-indicator:hover {
+        opacity: 1;
+    }
+
+    .scroll-left {
+        left: 5px;
+    }
+
+    .scroll-right {
+        right: 5px;
+    }
+
+    .filter-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Grupos de filtros en filas */
+    .roi-group,
+    .price-group,
+    .rank-group,
+    .filter-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+    }
+
+    /* Ajustar inputs y labels */
+    .filter-menu input {
+        width: 60px;
+    }
+
+    .filter-menu select {
+        width: 120px;
+    }
+
+    .filter-menu label {
+        min-width: 70px;
+        text-align: right;
+    }
+
+    /* Botones en última fila */
+    .button-container {
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+}
+/* Loading y errores */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    /*width: 100%;*/
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 2000;
 }
 
-.button-container button {
-    height: 28px;
-    line-height: 28px;
-    padding: 0 15px;
-    background-color: #007bff;
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
     color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 10px;
 }
 
+.error-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff4444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 2000;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sortable:hover {
+    background-color: #c0c0c0;
+}
+
+.sorted {
+    background-color: #b0b0b0;
+}
