@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>AOLINE3</title>
     <link rel="icon" href="star.ico">
-    <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="header">  
     <h1>AOLINE3</h1>
     <div class="filtros-header">
-        <h2 class="filtros-toggle" style="cursor: pointer;">Filtros: ▼</h2>
+        <h2 class="filtros-toggle">Filtros: ▼</h2>
         <div class="contador-productos" title="Cantidad de productos">0</div>
     </div>
     <div class="filter-menu-container">
         <div class="filter-menu">
-            <!-- Filtros de ROI -->
+            <!-- Filtros ROI -->
             <div class="roi-group">
                 <label for="roiMin">ROI mín:</label>
-                <input type="number" id="roiMin" placeholder="0" title="ROI mínimo %" />
+                <input type="number" id="roiMin" placeholder="0" />
                 <label for="roiMax">ROI Máx:</label>
-                <input type="number" id="roiMax" placeholder="300" title="ROI máximo %" />
+                <input type="number" id="roiMax" placeholder="300" />
             </div>
 
-            <!-- Filtros de Precio y Sales Rank -->
+            <!-- Filtros Precio -->
             <div class="price-group">
                 <label for="priceMin">Precio mín:</label>
                 <input type="number" id="priceMin" placeholder="0" step="0.01"/>
@@ -32,7 +32,15 @@
                 <input type="number" id="priceMax" placeholder="1000" step="0.01"/>
             </div>
 
-            <!-- Filtros de Tienda y Ordenamiento -->
+            <!-- Filtros Rank -->
+            <div class="rank-group">
+                <label for="salesRankMin">Rank mín:</label>
+                <input type="number" id="salesRankMin" placeholder="Min" />
+                <label for="salesRankMax">Rank máx:</label>
+                <input type="number" id="salesRankMax" placeholder="Max" />
+            </div>
+
+            <!-- Filtros Tienda y Ordenamiento -->
             <div class="filter-group">
                 <label for="storeFilter">Tienda:</label>
                 <select id="storeFilter">
@@ -64,17 +72,9 @@
     <!-- Productos -->
 </div>
 
-<!-- Popup de vendedores -->
-<div id="seller-popup" class="popup hidden">
-    <div class="popup-header">
-        <span>Vendedores</span>
-        <button id="close-popup">×</button>
-    </div>
-    <div class="popup-content">
-        <ul id="seller-list"></ul>
-    </div>
-</div>
+<!-- Cargar scripts en orden -->
+<script src="vendedores.js"></script>
+<script src="datos.js"></script>
 
-<script type="module" src="datos.js"></script>
 </body>
 </html>
