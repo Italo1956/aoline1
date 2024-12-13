@@ -41,7 +41,7 @@ function mostrarPopup(vendedores, productTitle) {
     
     // Posición inicial del popup
     popup.style.position = 'fixed';
-    popup.style.top = '50%';
+    popup.style.top = '60%';
     popup.style.left = '50%';
     popup.style.transform = 'translate(-50%, -50%)';
     

@@ -164,9 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div>AMAZON:</div>
                         <a href="${producto.asin}" target="_blank">
                             <div>${producto.asin.slice(-10)}</div>
-                        </a>
+                        </a> 
                         <div>Precio: $${producto.az_price.toFixed(2)}</div>
-                        <a href="https://keepa.com/#!product/1-${producto.asin.slice(-10)}" target="_blank" title="Estadisticas">
+                        <a href="https://www.sellersprite.com/v2/tools/sales-estimator?market=US&asin=${producto.asin.slice(-10)}" target="_blank" title="Estadisticas">
                             <div>BSR: #${producto.sales_rank}</div>
                         </a>
                         <div class="vendor-count" 
