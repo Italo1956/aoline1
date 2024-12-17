@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Colapsar/expandir filtros
     const filtrosToggle = document.querySelector('.filtros-toggle');
     const filterMenu = document.querySelector('.filter-menu');
-    let isExpanded = true;
+    let isExpanded = true; filtrosToggle.textContent = `${isExpanded ? '▼ Ocultar' : '▲ Mostrar'} Filtros`;
 
     // Crear y agregar los filtros
     const filtros = crearFiltros();
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filtrosToggle.addEventListener('click', () => {
         isExpanded = !isExpanded;
         filterMenu.classList.toggle('collapsed');
-        filtrosToggle.textContent = `Filtros ${isExpanded ? '▼' : '▲'}`;
+        filtrosToggle.textContent = `${isExpanded ? '▼ Ocultar' : '▲ Mostrar'} Filtros`;
     });
 
     // Cargar datos iniciales
@@ -427,14 +427,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById('sortBy').innerHTML = `
+        <option value="index">indice</option>
         <option value="salesRankAsc">Sales Rank ↑</option>
         <option value="salesRankDesc">Sales Rank ↓</option>
         <option value="roiDesc">ROI ↓</option>
         <option value="roiAsc">ROI ↑</option>
         <option value="priceAsc">Precio ↑</option>
         <option value="priceDesc">Precio ↓</option>
-        <option value="vendedoresDesc">Vendedores ↓</option>
-        <option value="vendedoresAsc">Vendedores ↑</option>
+        <option value="vendedoresDesc">#Vendedores ↓</option>
+        <option value="vendedoresAsc">#Vendedores ↑</option>
         <option value="fechaDesc">Fecha ↓</option>
         <option value="fechaAsc">Fecha ↑</option>
     `;
