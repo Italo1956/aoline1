@@ -24,7 +24,7 @@ document.addEventListener('click', async function(e) {
             }));
 
             // Mostrar popup con título del producto
-            mostrarPopup(vendedoresProcesados, productTitle);
+            mostrarPopup(vendedoresProcesados, productTitle.slice(0,65)+"...");
         } catch (error) {
             console.error('Error procesando vendedores:', error);
             console.log('Datos que causaron el error:', e.target.dataset.vendors);
