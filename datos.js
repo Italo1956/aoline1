@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById('sortBy').innerHTML = `
-        <option value="index">indice</option>
+        <option value="index">Indice</option>
         <option value="salesRankAsc">Sales Rank ↑</option>
         <option value="salesRankDesc">Sales Rank ↓</option>
         <option value="roiDesc">ROI ↓</option>
