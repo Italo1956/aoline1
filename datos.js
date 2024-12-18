@@ -139,7 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 return producto.source_name;
             }
-
+            
+            // Insertamos el contenido del producto dentro de la tarjeta
+            producto.profit = (producto.price)*(producto.roi)*(producto.qty);
             productCard.innerHTML = `
                 <div>Fecha: ${producto.fechaDescarga || 'No disponible'}</div>
                 <div class="header">
@@ -156,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div>Precio: $${producto.price.toFixed(2)}</div>
                         <div title="Maxima orden de compra">MaxOQ: ${producto.qty}</div>
                         <div title="Minima orden de compra">MOQ: ${producto.moq}</div>
+                        <div title="Ganancia Neta">NETO: $${((producto.price)*(producto.roi)).toFixed([2])} </div>
+                        <div title="Ganancia Neta x MaxOQ">PROFIT: $${(producto.profit).toFixed([2])} </div>
                     </div>
                     <div class="right">
                         <a href="${producto.asin}" target="_blank">
@@ -246,6 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
             case 'priceDesc':
                 filtrados.sort((a, b) => b.price - a.price);
                 break;
+            case "profitDesc":
+               filtrados.sort((a, b) => b.profit - a.profit);
+               break;
+            case "profitAsc":
+               filtrados.sort((a, b) => a.profit - b.profit);
+               break
             case 'vendedoresDesc':
                 filtrados.sort((a, b) => {
                     const vendedoresA = JSON.parse(a.az_offers).length;
@@ -430,14 +440,17 @@ document.addEventListener("DOMContentLoaded", () => {
         <option value="index">Indice</option>
         <option value="salesRankAsc">Sales Rank ↑</option>
         <option value="salesRankDesc">Sales Rank ↓</option>
-        <option value="roiDesc">ROI ↓</option>
         <option value="roiAsc">ROI ↑</option>
+        <option value="roiDesc">ROI ↓</option>
         <option value="priceAsc">Precio ↑</option>
         <option value="priceDesc">Precio ↓</option>
-        <option value="vendedoresDesc">#Vendedores ↓</option>
+        <option value="profitAsc">Profit ↑</option>
+        <option value="profitDesc">Profit ↓</option>
         <option value="vendedoresAsc">#Vendedores ↑</option>
-        <option value="fechaDesc">Fecha ↓</option>
+        <option value="vendedoresDesc">#Vendedores ↓</option>
         <option value="fechaAsc">Fecha ↑</option>
+        <option value="fechaDesc">Fecha ↓</option>
+        
     `;
 
     document.getElementById('sortBy').addEventListener('change', (e) => {
