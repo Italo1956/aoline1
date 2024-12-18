@@ -101,7 +101,7 @@ h1 {
 }
 
 .filter-menu select {
-    width: 110px;
+    width: 115px;
 }
 
 .filter-menu select:not(#sortBy) {
