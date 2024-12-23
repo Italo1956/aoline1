@@ -2,6 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let productosOriginales = []; 
     let currentPopup = null;
 
+    // Funcion para indicar numero de tiendas en Todas y ordenarlas(#)
+    function populateStoreFilter() {
+        const storeFilter = document.getElementById('storeFilter');
+        const uniqueStores = [...new Set(productosOriginales.map(p => p.source_name))];
+        const storeCount = uniqueStores.length;
+        
+        storeFilter.innerHTML = `<option value="">Todas (${storeCount})</option>`;
+        
+        uniqueStores.sort().forEach(store => {
+            const option = document.createElement('option');
+            option.value = store;
+            option.textContent = store;
+            storeFilter.appendChild(option);
+        });
+    }
+    
     // Función para cargar el archivo JSON de productos
     async function cargarDatos() {
         try {
@@ -11,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 producto.indiceOriginal = index + 1;
             });
             productosOriginales = datos; // Guardar copia original
-
+            populateStoreFilter();
             // Aplicar ordenamiento inicial
             const ordenar = document.getElementById('sortBy').value;
             let datosOrdenados = [...datos];
@@ -184,9 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 </div>
-                <a class="gshop-ico" href="https://www.google.com/search?tbm=shop&amp;psb=1&amp;q=${recortarTitulo2(producto.title)}" target="_blank" title="Buscar en Google Shopping">
+            <a class="gshop-ico" href="https://www.google.com/search?tbm=shop&amp;psb=1&amp;q=${recortarTitulo2(producto.title)}" target="_blank" title="Buscar en Google Shopping">
                     <img src="GShop-32.ico" alt="Google Shopping">
-                </a>
+            </a>
                 <div class="roi">
                     ROI: ${Math.round(producto.roi*100)}% 🔰
                 </div>
