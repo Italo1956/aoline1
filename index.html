@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>AOLINE3</title>
+    <link rel="icon" href="star.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="header">  
+    <h1>AOLINE3</h1>
+    <div class="filtros-header">
+        <h2 class="filtros-toggle">Mostrar Filtros: ▼</h2>
+        <div class="contador-productos" title="Cantidad de productos">0</div>
+    </div>
+    <div class="filter-menu-container">
+        <div class="filter-menu">
+            <!-- Filtros ROI -->
+            <div class="roi-group">
+                <label for="roiMin">ROI:</label>
+                <input type="number" id="roiMin" placeholder="min" />
+                <label for="roiMax">ROI:</label>
+                <input type="number" id="roiMax" placeholder="Max" />
+            </div>
+
+            <!-- Filtros Precio -->
+            <div class="price-group">
+                <label for="priceMin">Precio:</label>
+                <input type="number" id="priceMin" placeholder="mín" step="0.1"/>
+                <label for="priceMax">Precio:</label>
+                <input type="number" id="priceMax" placeholder="Máx" step="0.1"/>
+            </div>
+
+            <!-- Filtros Rank -->
+            <div class="rank-group">
+                <label for="salesRankMin">Rank:</label>
+                <input type="number" id="salesRankMin" placeholder="min" />
+                <label for="salesRankMax">Rank:</label>
+                <input type="number" id="salesRankMax" placeholder="Max" />
+            </div>
+
+            <!-- Filtros Tienda y Ordenamiento -->
+            <div class="filter-group">
+                <label for="storeFilter">Tienda:</label>
+                <select id="storeFilter">
+                    <option value="">Todas</option>
+                </select>
+
+                <label for="sortBy">Ordenar:</label>                           
+                <select id="sortBy">
+                    <option value="index">Indice</option>
+                    <option value="salesRankAsc">Sales Rank ↑</option>
+                    <option value="salesRankDesc">Sales Rank ↓</option>
+                    <option value="roiDesc">ROI ↓</option>
+                    <option value="roiAsc">ROI ↑</option>
+                    <option value="priceAsc">Precio ↑</option>
+                    <option value="priceDesc">Precio ↓</option>
+                    <option value="profitAsc">Profit ↑</option>
+                    <option value="profitDesc">Profit ↓</option>
+                    <option value="vendedoresAsc"># Vendedores ↑</option>
+                    <option value="vendedoresDesc"># Vendedores ↓</option>
+                    <option value="fechaAsc">Fecha ↑</option>
+                    <option value="fechaDesc">Fecha ↓</option>
+                </select>
+            </div>
+
+            <!-- Botones -->
+            <div class="button-container">
+                <button id="resetFilters">Reset</button>   
+                <button id="applyFilters">Aplicar</button>
+                <button id="updateData" title="Actualizar datos">🔄</button>   
+            </div>
+        </div>
+    </div>  
+</div>    
+
+<div class="container">
+    <!-- Productos -->
+
+    <!-- controles de paginación y la selección de productos por página -->
+<div class="pagination-controls">
+    <span id="currentPageInfo">Página 1</span>  
+    
+    <div class="items-per-page-container">
+    <label for="itemsPerPage">Productos por página:</label>
+        <select id="itemsPerPage">
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    
+    <div class="page-navigation">
+        <button id="prevPage">Anterior</button>
+        <button id="nextPage">Siguiente</button>
+        <label for="goToPage">Ir a la página:</label>
+        <input type="number" id="goToPage" min="1" placeholder="N° Página">
+        <button id="goPageButton">Ir</button>
+    </div>  
+</div>
+    
+    <!-- controles de paginación y la selección de productos por página hasta aqui-->
+    
+</div>
+
+<!-- Cargar scripts en orden -->
+<script src="vendedores.js"></script>
+<script src="datos.js"></script>
+
+</body>
+</html>
