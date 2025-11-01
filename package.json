@@ -1,7 +1,7 @@
 {
   "name": "aoline-backend",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "scriptmio2.js",
   "type": "module",
   "dependencies": {
     "data-uri-to-buffer": "^4.0.1",
@@ -10,9 +10,10 @@
     "node-domexception": "^1.0.0",
     "node-fetch": "^3.3.2",
     "web-streams-polyfill": "^3.3.3"
+    "express": "^4.18.2"
   },
   "scripts": {
-   "start": "node script.js"
+   "start": "node "scriptmio2.js""
   },
   "keywords": [],
   "author": "",
