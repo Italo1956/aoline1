@@ -10,7 +10,9 @@
     "node-domexception": "^1.0.0",
     "node-fetch": "^3.3.2",
     "web-streams-polyfill": "^3.3.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "node-schedule": "^2.1.1",  
+    "puppeteer": "^23.11.1"
   },
   "scripts": {
    "start": "node scriptmio2.js",
