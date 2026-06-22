@@ -60,7 +60,7 @@ h1 {
     flex-wrap: wrap;
     position: sticky;
     top: 120px;
-    background-color: #d3bebe;
+    background-color: rgb(200, 130, 190);
     z-index: 2999;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 10px;
@@ -210,7 +210,7 @@ h1 {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #d3bebe;
+    background-color: rgb(200, 130, 190);
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
