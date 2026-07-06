@@ -128,13 +128,21 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             let datos = await obtenerTodosProductos();
 
+            // 🔹 CORREGIDO: Verificar si hay datos
             if (!datos || datos.length === 0) {
-                console.warn("⚠️ No hay productos guardados en IndexedDB/AOLINE/productos");
+                console.warn("⚠️ No hay productos guardados en IndexedDB");
                 const container = document.querySelector(".container");
-                if (container) container.innerHTML = "<p style='color:orange'>No hay productos almacenados en esta base de datos.</p>";
+                if (container) {
+                    // Mantener los controles de paginación
+                    const paginationControls = container.querySelector('.pagination-controls');
+                    container.innerHTML = '';
+                    if (paginationControls) container.appendChild(paginationControls);
+                    container.innerHTML += "<p style='color:orange; padding: 20px;'>No hay productos almacenados en esta base de datos.</p>";
+                }
                 return;
             }
 
+            // Procesar datos
             datos.forEach((producto, index) => {
                 producto.indiceOriginal = index + 1;
             });
@@ -167,9 +175,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 🔹 PUNTO 1: Eliminada la función imagenExiste() - ya no se usa
-
     async function mostrarProductos(datos) {
+        // 🔹 CORREGIDO: Verificar que hay datos para mostrar
+        if (!datos || datos.length === 0) {
+            const container = document.querySelector('.container');
+            if (container) {
+                const paginationControls = container.querySelector('.pagination-controls');
+                container.innerHTML = '';
+                if (paginationControls) container.appendChild(paginationControls);
+                container.innerHTML += "<p style='color:orange; padding: 20px;'>No hay productos para mostrar.</p>";
+            }
+            return;
+        }
+
         datosFiltrados = datos;
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
@@ -180,10 +198,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = document.querySelector('.container');
         if (!container) return console.error('No se encontró el contenedor .container');
 
+        // 🔹 CORREGIDO: Guardar los controles de paginación antes de limpiar
         const paginationControls = container.querySelector('.pagination-controls');
         container.innerHTML = '';
-        if (paginationControls) container.appendChild(paginationControls);
+        
+        // 🔹 CORREGIDO: Reconstruir los controles de paginación
+        const newPaginationControls = crearControlesPaginacion();
+        container.appendChild(newPaginationControls);
 
+        // Mostrar productos
         for (const producto of paginatedData) {
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
@@ -193,65 +216,98 @@ document.addEventListener("DOMContentLoaded", () => {
                 vendor = JSON.parse(producto.az_offers.replace(/'/g, '´')) || [];
             } catch { vendor = []; }
 
-            // 🔹 PUNTO 1: Eliminada la verificación de imágenes, ahora usa directamente las URLs
+            // 🔹 PUNTO 1: Eliminada la verificación de imágenes
             const imgSrc = producto.img || 'Imagesoon.jpg';
             const azImgSrc = producto.az_img || 'Imagesoon.jpg';
 
-            function recortarTitulo(titulo) { return titulo.length > 25 ? titulo.slice(0, 25) + "..." : titulo; }
-            function recortarTitulo2(titulo) { return titulo.length > 65 ? titulo.slice(0, 65) : titulo; }
-            function recortarNombreTienda(nombre) { return window.innerWidth <= 600 && nombre.length > 11 ? nombre.slice(0, 9) + "..." : nombre; }
+            function recortarTitulo(titulo) { 
+                return titulo && titulo.length > 25 ? titulo.slice(0, 25) + "..." : titulo || ''; 
+            }
+            function recortarTitulo2(titulo) { 
+                return titulo && titulo.length > 65 ? titulo.slice(0, 65) : titulo || ''; 
+            }
+            function recortarNombreTienda(nombre) { 
+                return nombre && window.innerWidth <= 600 && nombre.length > 11 ? nombre.slice(0, 9) + "..." : nombre || ''; 
+            }
 
-            producto.profit = producto.price * producto.roi * producto.qty;
+            producto.profit = (producto.price || 0) * (producto.roi || 0) * (producto.qty || 0);
 
             productCard.innerHTML = `
                 <div class="product-select">
-                    <input type="checkbox" class="select-product" data-asin="${producto.asin}">
+                    <input type="checkbox" class="select-product" data-asin="${producto.asin || ''}">
                 </div>
                 <div>Fecha: ${producto.fechaDescarga || 'No disponible'}</div>
                 <div class="header">
-                    <h2 title="${producto.title}">${recortarTitulo(producto.title)}</h2>
-                    <span class="index">${producto.indiceOriginal}</span>
+                    <h2 title="${producto.title || ''}">${recortarTitulo(producto.title)}</h2>
+                    <span class="index">${producto.indiceOriginal || 0}</span>
                 </div>
                 <div class="images">
                     <div class="left">
-                        <a href="${producto.url}" target="_blank">
+                        <a href="${producto.url || '#'}" target="_blank">
                             <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda">
                         </a>
                         <div>TIENDA:</div>
-                        <div title="${producto.source_name}">${recortarNombreTienda(producto.source_name)}</div>
-                        <div>Precio: $${producto.price.toFixed(2)}</div>
-                        <div title="Maxima orden de compra">MaxOQ: ${producto.qty}</div>
-                        <div title="Minima orden de compra">MOQ: ${producto.moq}</div>
-                        <div title="Ganancia Neta">NETO: $${(producto.price * producto.roi).toFixed(2)}</div>
-                        <div title="Ganancia Neta x MaxOQ">PROFIT: $${producto.profit.toFixed(2)}</div>
+                        <div title="${producto.source_name || ''}">${recortarNombreTienda(producto.source_name)}</div>
+                        <div>Precio: $${(producto.price || 0).toFixed(2)}</div>
+                        <div title="Maxima orden de compra">MaxOQ: ${producto.qty || 0}</div>
+                        <div title="Minima orden de compra">MOQ: ${producto.moq || 0}</div>
+                        <div title="Ganancia Neta">NETO: $${((producto.price || 0) * (producto.roi || 0)).toFixed(2)}</div>
+                        <div title="Ganancia Neta x MaxOQ">PROFIT: $${(producto.profit || 0).toFixed(2)}</div>
                     </div>
                     <div class="right">
-                        <a href="${producto.asin}" target="_blank">
+                        <a href="${producto.asin || '#'}" target="_blank">
                             <img src="${azImgSrc}" alt="Imagen derecha" title="Ir a AMAZON">
                         </a>
                         <div>AMAZON:</div>
-                        <a href="https://www.profitguru.com/calculator/sales?asin=${producto.asin.slice(-10)}" target="_blank" title="ver Historial Ventas">
-                            <div>${producto.asin.slice(-10)}</div>
+                        <a href="https://www.profitguru.com/calculator/sales?asin=${(producto.asin || '').slice(-10)}" target="_blank" title="ver Historial Ventas">
+                            <div>${(producto.asin || '').slice(-10)}</div>
                         </a>
-                        <div>Precio: $${producto.az_price.toFixed(2)}</div>
-                        <a href="https://www.sellersprite.com/v2/tools/sales-estimator?market=US&asin=${producto.asin.slice(-10)}" target="_blank" title="Estadisticas">
-                            <div>BSR: #${producto.sales_rank}</div>
+                        <div>Precio: $${(producto.az_price || 0).toFixed(2)}</div>
+                        <a href="https://www.sellersprite.com/v2/tools/sales-estimator?market=US&asin=${(producto.asin || '').slice(-10)}" target="_blank" title="Estadisticas">
+                            <div>BSR: #${producto.sales_rank || 0}</div>
                         </a>
-                        <div class="vendor-count" style="cursor: pointer;" data-vendors='${encodeURIComponent(JSON.stringify(vendor))}' data-indice='${producto.indiceOriginal}'>
+                        <div class="vendor-count" style="cursor: pointer;" data-vendors='${encodeURIComponent(JSON.stringify(vendor))}' data-indice='${producto.indiceOriginal || 0}'>
                             Vendedores: ${vendor.length}
                         </div>
                         <div class="categoria">Categoría: ${producto.categoria || 'No disponible'}</div>
                     </div>
                 </div>
-                <a class="gshop-ico" href="https://www.google.com/search?tbm=shop&amp;psb=1&amp;q=${recortarTitulo2(producto.title)}" target="_blank" title="Buscar en Google Shopping"><img src="GShop-16.ico" alt="Google Shopping"></a>
-                <a class="gshop-ico" href="https://lens.google.com/uploadbyurl?url=${encodeURIComponent(producto.az_img.replace(/'/g, ''))}" target="_blank" title="Buscar con Google Lens"><img src="Google_Lens16.png" alt="Google Lens"></a>
-                <a class="gshop-ico" href="https://www.bing.com/images/search?view=detailv2&iss=sbi&form=SBIIDP&sbisrc=UrlPaste&q=imgurl:${encodeURIComponent(producto.az_img.replace(/'/g, ''))}" target="_blank" title="Buscar imagen en Bing"><img src="Bing-16.png" alt="Bing"></a>
+                <a class="gshop-ico" href="https://www.google.com/search?tbm=shop&amp;psb=1&amp;q=${encodeURIComponent(recortarTitulo2(producto.title))}" target="_blank" title="Buscar en Google Shopping"><img src="GShop-16.ico" alt="Google Shopping"></a>
+                <a class="gshop-ico" href="https://lens.google.com/uploadbyurl?url=${encodeURIComponent((producto.az_img || '').replace(/'/g, ''))}" target="_blank" title="Buscar con Google Lens"><img src="Google_Lens16.png" alt="Google Lens"></a>
+                <a class="gshop-ico" href="https://www.bing.com/images/search?view=detailv2&iss=sbi&form=SBIIDP&sbisrc=UrlPaste&q=imgurl:${encodeURIComponent((producto.az_img || '').replace(/'/g, ''))}" target="_blank" title="Buscar imagen en Bing"><img src="Bing-16.png" alt="Bing"></a>
                 <a class="gshop-ico" href="https://shopping.yahoo.com/search?p=${encodeURIComponent(recortarTitulo2(producto.title))}" target="_blank" title="Buscar en Yahoo Shopping"><img src="Yahoo-16.png" alt="Yahoo Shopping"></a>
-                <div class="roi">ROI: ${Math.round(producto.roi*100)}% 🔰</div>
+                <div class="roi">ROI: ${Math.round((producto.roi || 0) * 100)}% 🔰</div>
             `;
 
             container.appendChild(productCard);
         }
+    }
+
+    // 🔹 NUEVA FUNCIÓN: Crear controles de paginación
+    function crearControlesPaginacion() {
+        const controls = document.createElement('div');
+        controls.className = 'pagination-controls';
+        controls.innerHTML = `
+            <span id="currentPageInfo">Página 1</span>  
+            
+            <div class="items-per-page-container">
+                <label for="itemsPerPage">Productos por página:</label>
+                <select id="itemsPerPage">
+                    <option value="20">20</option>
+                    <option value="50" selected>50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            
+            <div class="page-navigation">
+                <button id="prevPage">Anterior</button>
+                <button id="nextPage">Siguiente</button>
+                <label for="goToPage">Ir a la página:</label>
+                <input type="number" id="goToPage" min="1" placeholder="N° Página">
+                <button id="goPageButton">Ir</button>
+            </div>  
+        `;
+        return controls;
     }
 
     window.verHistorialVentas = function (asin) {
@@ -309,7 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         mostrarProductos(filtrados);
-        document.querySelector('.contador-productos').textContent = filtrados.length;
+        const contador = document.querySelector('.contador-productos');
+        if (contador) contador.textContent = filtrados.length;
     }
 
     function reset() {
@@ -323,56 +380,57 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('sortBy').value = 'index';
         currentPage = 1;
         mostrarProductos(productosOriginales);
-        document.querySelector('.contador-productos').textContent = productosOriginales.length;
+        const contador = document.querySelector('.contador-productos');
+        if (contador) contador.textContent = productosOriginales.length;
     }
 
     // ---------------------- Paginación y botones ----------------------
-    const prevPageBtn = document.getElementById('prevPage');
-    if (prevPageBtn) prevPageBtn.addEventListener('click', () => changePage(currentPage - 1));
+    // 🔹 CORREGIDO: Usar event delegation para los controles dinámicos
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'prevPage') {
+            changePage(currentPage - 1);
+        } else if (e.target.id === 'nextPage') {
+            changePage(currentPage + 1);
+        } else if (e.target.id === 'goPageButton') {
+            const pageNum = parseInt(document.getElementById('goToPage').value);
+            changePage(pageNum);
+        }
+    });
 
-    const nextPageBtn = document.getElementById('nextPage');
-    if (nextPageBtn) nextPageBtn.addEventListener('click', () => changePage(currentPage + 1));
-
-    const itemsPerPageSelect = document.getElementById('itemsPerPage');
-    if (itemsPerPageSelect) {
-        // 🔹 PUNTO 5: Establecer el valor seleccionado a 50
-        itemsPerPageSelect.value = '50';
-        itemsPerPageSelect.addEventListener('change', (e) => {
+    document.addEventListener('change', function(e) {
+        if (e.target.id === 'itemsPerPage') {
             itemsPerPage = parseInt(e.target.value);
             currentPage = 1;
             aplicarFiltros();
-        });
-    }
-
-    const goToPageBtn = document.getElementById('goPageButton');
-    if (goToPageBtn) goToPageBtn.addEventListener('click', () => {
-        const pageNum = parseInt(document.getElementById('goToPage').value);
-        changePage(pageNum);
+        }
     });
 
-    const goToPageInput = document.getElementById('goToPage');
-    if (goToPageInput) goToPageInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') changePage(parseInt(e.target.value));
+    document.addEventListener('keypress', function(e) {
+        if (e.target.id === 'goToPage' && e.key === 'Enter') {
+            const pageNum = parseInt(e.target.value);
+            changePage(pageNum);
+        }
     });
 
     document.getElementById("applyFilters")?.addEventListener("click", aplicarFiltros);
     document.getElementById('resetFilters')?.addEventListener('click', reset);
     document.getElementById('exportJSON')?.addEventListener('click', exportarAJSON);
 
-    // ---------------------- habilita botom Eliminar productos seleccionados ----------------------
-    const deleteButton = document.getElementById('deleteSelected');
-    if (!deleteButton) return;
-
-    deleteButton.disabled = true;
-
-    document.body.addEventListener('change', (e) => {
-        if (e.target.matches('.select-product')) {
-            const anyChecked = document.querySelectorAll('.select-product:checked').length > 0;
-            deleteButton.disabled = !anyChecked;
-        }
-    });
-
     // ---------------------- Eliminar productos seleccionados ----------------------
+    const deleteButton = document.getElementById('deleteSelected');
+    if (deleteButton) {
+        deleteButton.disabled = true;
+
+        document.body.addEventListener('change', (e) => {
+            if (e.target.matches('.select-product')) {
+                const anyChecked = document.querySelectorAll('.select-product:checked').length > 0;
+                deleteButton.disabled = !anyChecked;
+            }
+        });
+
+        deleteButton.addEventListener('click', eliminarSeleccionados);
+    }
+
     async function eliminarSeleccionados() {
         const checkboxes = document.querySelectorAll('.select-product:checked');
         const asinToDelete = Array.from(checkboxes).map(cb => cb.dataset.asin);
@@ -390,7 +448,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             await borrarProductos(asinToDelete);
 
-            const deleteButton = document.getElementById('deleteSelected');
             if (deleteButton) deleteButton.disabled = true;
 
             console.log(`🗑️ ${asinToDelete.length} productos eliminados de IndexedDB.`);
@@ -399,8 +456,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Ocurrió un error eliminando los productos.");
         }
     }
-
-    if (deleteButton) deleteButton.addEventListener('click', eliminarSeleccionados);
 
     // ---------------------- Funciones de fecha ----------------------
     const fechaToTimestamp = (fechaString) => {
