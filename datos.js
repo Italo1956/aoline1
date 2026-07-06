@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let productosOriginales = [];
     let currentPopup = null;
     let currentPage = 1;
-    let itemsPerPage = 50; // 🔹 CAMBIO PUNTO 5: Reducido de 100 a 50
+    let itemsPerPage = 100;
     let totalPages = 1;
     let datosFiltrados = [];
 
@@ -172,8 +172,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }
 
-    // 🔹 PUNTO 1: Eliminada la función imagenExiste() - ya no se usa
-    // La función imagenExiste ha sido eliminada COMPLETAMENTE
+
+    async function imagenExiste(url) {
+        return new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
 
     async function mostrarProductos(datos) {
         
@@ -200,11 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 vendor = JSON.parse(producto.az_offers.replace(/'/g, '´')) || [];
             } catch { vendor = []; }
 
-            // 🔹 PUNTO 1: Eliminada la verificación de imágenes
-            // Antes: const imgSrc = await imagenExiste(producto.img) ? producto.img : 'Imagesoon.jpg';
-            // Ahora: uso directo de la URL
-            const imgSrc = producto.img || 'Imagesoon.jpg';
-            const azImgSrc = producto.az_img || 'Imagesoon.jpg';
+            const imgSrc = await imagenExiste(producto.img) ? producto.img : 'Imagesoon.jpg';
+            const azImgSrc = await imagenExiste(producto.az_img) ? producto.az_img : 'Imagesoon.jpg';
 
             function recortarTitulo(titulo) { return titulo.length > 25 ? titulo.slice(0, 25) + "..." : titulo; }
             function recortarTitulo2(titulo) { return titulo.length > 65 ? titulo.slice(0, 65) : titulo; }
@@ -343,15 +347,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nextPageBtn) nextPageBtn.addEventListener('click', () => changePage(currentPage + 1));
 
     const itemsPerPageSelect = document.getElementById('itemsPerPage');
-    if (itemsPerPageSelect) {
-        // 🔹 PUNTO 5: Establecer el valor seleccionado a 50
-        itemsPerPageSelect.value = '50';
-        itemsPerPageSelect.addEventListener('change', (e) => {
-            itemsPerPage = parseInt(e.target.value);
-            currentPage = 1;
-            aplicarFiltros();
-        });
-    }
+    if (itemsPerPageSelect) itemsPerPageSelect.addEventListener('change', (e) => {
+        itemsPerPage = parseInt(e.target.value);
+        currentPage = 1;
+        aplicarFiltros();
+    });
 
     const goToPageBtn = document.getElementById('goPageButton');
     if (goToPageBtn) goToPageBtn.addEventListener('click', () => {
