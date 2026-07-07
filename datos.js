@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="images">
                     <div class="left">
                         <a href="${producto.url}" target="_blank">
-                            <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda" onerror="this.src='Imagesoon.jpg'">
+                            <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda">
                         </a>
                         <div>TIENDA:</div>
                         <div title="${producto.source_name}">${recortarNombreTienda(producto.source_name)}</div>
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="right">
                         <a href="${producto.asin}" target="_blank">
-                            <img src="${azImgSrc}" alt="Imagen derecha" title="Ir a AMAZON" onerror="this.src='Imagesoon.jpg'">
+                            <img src="${azImgSrc}" alt="Imagen derecha" title="Ir a AMAZON">
                         </a>
                         <div>AMAZON:</div>
                         <a href="https://www.profitguru.com/calculator/sales?asin=${producto.asin.slice(-10)}"target="_blank" title="ver Historial Ventas">
