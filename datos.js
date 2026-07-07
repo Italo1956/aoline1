@@ -181,8 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 vendor = [];
             }
 
-            const imgSrc = await imagenExiste(producto.img) ? producto.img : 'Imagesoon.jpg';
-            const azImgSrc = await imagenExiste(producto.az_img) ? producto.az_img : 'Imagesoon.jpg';
+            const imgSrc = producto.img || 'Imagesoon.jpg';
+            const azImgSrc = producto.az_img || 'Imagesoon.jpg';
             let url = producto.az_img;
             let urlImage = url.replaceAll(/'/g, "");
             
