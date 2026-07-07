@@ -220,8 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div>Precio: $${producto.price.toFixed(2)}</div>
                         <div title="Maxima orden de compra">MaxOQ: ${producto.qty}</div>
                         <div title="Minima orden de compra">MOQ: ${producto.moq}</div>
-                        <div title="Ganancia Neta">NETO: $${((producto.price)*(producto.roi)).toFixed([2])} </div>
-                        <div title="Ganancia Neta x MaxOQ">PROFIT: $${(producto.profit).toFixed([2])} </div>
+                        <div title="Margen bruto sin fees ni taxes">BRUTO: $${((producto.price)*(producto.roi)).toFixed([2])} </div>
                     </div>
                     <div class="right">
                         <a href="${producto.asin}" target="_blank">
