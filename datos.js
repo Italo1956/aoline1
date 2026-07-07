@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let productosOriginales = []; 
     let currentPopup = null;
     let currentPage = 1;
-    let itemsPerPage = 50;
+    let itemsPerPage = 100;
     let totalPages = 1;
     let datosFiltrados = [];
 
@@ -134,6 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function imagenExiste(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
+
     async function mostrarProductos(datos) {
         datosFiltrados = datos;
         const startIndex = (currentPage - 1) * itemsPerPage;
@@ -172,8 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 vendor = [];
             }
 
-            const imgSrc = producto.img || 'Imagesoon.jpg';
-            const azImgSrc = producto.az_img || 'Imagesoon.jpg';
+            const imgSrc = await imagenExiste(producto.img) ? producto.img : 'Imagesoon.jpg';
+            const azImgSrc = await imagenExiste(producto.az_img) ? producto.az_img : 'Imagesoon.jpg';
             let url = producto.az_img;
             let urlImage = url.replaceAll(/'/g, "");
             
@@ -247,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
             
-            
+            container.appendChild(productCard);
         }
     }
 
