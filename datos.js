@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="images">
                     <div class="left">
                         <a href="${producto.url}" target="_blank">
-                            <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda">
+                            <img src="${imgSrc}" alt="Imagen izquierda" title="Buscar en la tienda" onerror="this.src='Imagesoon.jpg'">
                         </a>
                         <div>TIENDA:</div>
                         <div title="${producto.source_name}">${recortarNombreTienda(producto.source_name)}</div>
