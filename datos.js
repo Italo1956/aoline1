@@ -172,8 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 vendor = [];
             }
 
-            const imgSrc = !producto.img ? 'Imagesoon.jpg' : producto.img;
-            const azImgSrc = !producto.az_img ? 'Imagesoon.jpg' : producto.az_img;
+            const imgSrc = producto.img || 'Imagesoon.jpg';
+            const azImgSrc = producto.az_img || 'Imagesoon.jpg';
             let url = producto.az_img;
             let urlImage = url.replaceAll(/'/g, "");
             
