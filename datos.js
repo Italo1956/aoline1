@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let productosOriginales = []; 
     let currentPopup = null;
     let currentPage = 1;
-    let itemsPerPage = 100;
+    let itemsPerPage = 50;
     let totalPages = 1;
     let datosFiltrados = [];
 
