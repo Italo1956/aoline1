@@ -658,6 +658,9 @@ h1 {
 }
 
 @media (max-width: 1440px) {
+    .filter-menu-container {
+     margin: 0px !important;   
+    }
     .logo-container svg text {
         display: none; /* Oculta todo el texto, solo icono */
     }
