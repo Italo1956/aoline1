@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>AOLINE3</title>
+    <link rel="icon" href="star.ico">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos adicionales para el header con logo */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: #0F172A;
+            border-bottom: 2px solid #FF9900;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .logo-container svg {
+            height: 40px;
+            width: auto;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+<div class="header">  
+    <!-- LOGO SVG -->
+    <div class="logo-container">
+        <svg viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- A Letter - 3 upward arrows -->
+            <polygon fill="#FFFFFF" points="8,38 14,38 14,28 18,28 13,18 8,28 10,28"/>
+            <polygon fill="#FFFFFF" points="28,38 34,38 34,28 38,28 33,18 28,28 30,28"/>
+            <polygon fill="#FF9900" points="23,12 19,24 23,24 23,32 27,32 27,24 31,24"/>
+            
+            <!-- Shipping box mini -->
+            <rect x="18" y="34" width="10" height="6" rx="1" fill="#FF9900" opacity="0.3"/>
+            <line x1="18" y1="37" x2="28" y2="37" stroke="#FF9900" stroke-width="0.8" opacity="0.4"/>
+            
+            <!-- Brand name -->
+            <text x="42" y="28" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="2">AOLINE3</text>
+            <text x="42" y="40" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="300" fill="#FF9900" letter-spacing="4" opacity="0.8">AMAZON ANALYTICS</text>
+        </svg>
+    </div>
+
+    <div class="filter-menu-container">
+        <div class="filter-menu">
+            <!-- Filtros ROI -->
+            <div class="roi-group">
+                <label for="roiMin">ROI:</label>
+                <input type="number" id="roiMin" placeholder="min" />
+                <label for="roiMax">ROI:</label>
+                <input type="number" id="roiMax" placeholder="Max" />
+            </div>
+
+            <!-- Filtros Precio -->
+            <div class="price-group">
+                <label for="priceMin">Precio:</label>
+                <input type="number" id="priceMin" placeholder="mín" step="0.1"/>
+                <label for="priceMax">Precio:</label>
+                <input type="number" id="priceMax" placeholder="Máx" step="0.1"/>
+            </div>
+
+            <!-- Filtros Rank -->
+            <div class="rank-group">
+                <label for="salesRankMin">Rank:</label>
+                <input type="number" id="salesRankMin" placeholder="min" />
+                <label for="salesRankMax">Rank:</label>
+                <input type="number" id="salesRankMax" placeholder="Max" />
+            </div>
+
+            <!-- Filtros Tienda y Ordenamiento -->
+            <div class="filter-group">
+                <label for="storeFilter">Tienda:</label>
+                <select id="storeFilter">
+                    <option value="">Todas</option>
+                </select>
+
+                <label for="sortBy">Ordenar:</label>                           
+                <select id="sortBy">
+                    <option value="index">Indice</option>
+                    <option value="salesRankAsc">Sales Rank ↑</option>
+                    <option value="salesRankDesc">Sales Rank ↓</option>
+                    <option value="roiDesc">ROI ↓</option>
+                    <option value="roiAsc">ROI ↑</option>
+                    <option value="priceAsc">Precio ↑</option>
+                    <option value="priceDesc">Precio ↓</option>
+                    <option value="profitAsc">Profit ↑</option>
+                    <option value="profitDesc">Profit ↓</option>
+                    <option value="vendedoresAsc"># Vendedores ↑</option>
+                    <option value="vendedoresDesc"># Vendedores ↓</option>
+                    <option value="fechaAsc">Fecha ↑</option>
+                    <option value="fechaDesc">Fecha ↓</option>
+                </select>
+            </div>
+
+            <!-- Botones -->
+            <div class="button-container">
+                <button id="resetFilters">Reset</button>   
+                <button id="applyFilters">Aplicar</button> 
+            </div>
+            <div class="contador-productos" title="Cantidad de productos">0</div>
+        </div>
+    </div>  
+</div>    
+
+<div class="container">
+    <!-- Productos -->
+
+    <!-- controles de paginación y la selección de productos por página -->
+<div class="pagination-controls">
+    <span id="currentPageInfo">Página 1</span>  
+    
+    <div class="items-per-page-container">
+    <label for="itemsPerPage">Productos por página:</label>
+        <select id="itemsPerPage">
+            <option value="20">20</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    
+    <div class="page-navigation">
+        <button id="prevPage">Anterior</button>
+        <button id="nextPage">Siguiente</button>
+        <label for="goToPage">Ir a la página:</label>
+        <input type="number" id="goToPage" min="1" placeholder="N° Página">
+        <button id="goPageButton">Ir</button>
+    </div>  
+</div>
+    
+    <!-- controles de paginación y la selección de productos por página hasta aqui-->
+    
+</div>
+
+<!-- Cargar scripts en orden -->
+<script src="vendedores.js"></script>
+<script src="datos.js"></script>
+
+</body>
+</html>
