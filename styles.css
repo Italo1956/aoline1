@@ -631,13 +631,26 @@ h1 {
 }
 
 /* Para pantallas pequeñas, el logo se achica */
-@media (max-width: 1600px) {
+@media (max-width: 1680px) {
     .logo-container svg {
         height: 28px;
     }
     .logo-container svg text:last-of-type {
         font-size: 15px !important;
         letter-spacing: 2px !important;
+    }
+}
+
+/* Para pantallas de 1600px o menos, el logo se achica y oculta el subtítulo */
+@media (max-width: 1600px) {
+    .logo-container svg {
+        height: 28px;
+    }
+    .logo-container svg text:last-of-type {
+        display: none; /* ← OCULTA "AMAZON ANALYTICS" */
+    }
+    .logo-container svg text:first-of-type {
+        font-size: 20px !important; /* Ajusta el tamaño de "AONLINE-3" */
     }
 }
 
