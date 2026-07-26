@@ -626,6 +626,7 @@ h1 {
 @media (max-width: 1680px) {
     .header svg {
         height: 30px !important;
+        width: auto !important:
     }
     .header svg text:first-of-type {
         font-size: 25px !important;
