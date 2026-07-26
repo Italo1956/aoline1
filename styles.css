@@ -631,7 +631,7 @@ h1 {
 }
 
 /* Para pantallas pequeñas, el logo se achica */
-@media (max-width: 1680px) {
+@media (max-width: 1600px) {
     .logo-container svg {
         height: 28px;
     }
