@@ -657,7 +657,7 @@ h1 {
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
     .logo-container svg text {
         display: none; /* Oculta todo el texto, solo icono */
     }
