@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function actualizarDatos() {
         try {
-            const updateButton = document.getElementById('updateData');
+            /*const updateButton = document.getElementById('updateData');*/
             const originalText = updateButton.innerHTML;
             updateButton.innerHTML = '⌛ Actualizando...';
             updateButton.disabled = true;
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("applyFilters").addEventListener("click", aplicarFiltros);
     document.getElementById('resetFilters').addEventListener('click', reset);
-    document.getElementById('updateData').addEventListener('click', actualizarDatos);
+    /*document.getElementById('updateData').addEventListener('click', actualizarDatos);*/
 
     const fechaToTimestamp = (fechaString) => {
         if (!fechaString) return 0;
