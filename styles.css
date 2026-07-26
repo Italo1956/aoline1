@@ -629,10 +629,10 @@ h1 {
         width: auto !important:
     }
     .header svg text:first-of-type {
-        font-size: 25px !important;
+        font-size: 27px !important;
     }
     .header svg text:last-of-type {
-        font-size: 10px !important;
+        font-size: 15px !important;
         letter-spacing: 2px !important;
     }
 }
