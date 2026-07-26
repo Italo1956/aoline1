@@ -622,16 +622,16 @@ h1 {
     float: left;
 }
 
-/* Para pantallas de 1600px o menos, el logo se achica */
-@media (max-width: 1600px) {
+/* Para pantallas de 1680px o menos, el logo se achica */
+@media (max-width: 1680px) {
     .header svg {
-        height: 28px !important;
+        height: 30px !important;
     }
     .header svg text:first-of-type {
-        font-size: 13px !important;
+        font-size: 25px !important;
     }
     .header svg text:last-of-type {
-        font-size: 5px !important;
+        font-size: 10px !important;
         letter-spacing: 2px !important;
     }
 }
