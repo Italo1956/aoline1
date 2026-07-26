@@ -7,24 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let datosFiltrados = [];
 
     // Colapsar/expandir filtros
-    const filtrosToggle = document.querySelector('.filtros-toggle');
+    /*const filtrosToggle = document.querySelector('.filtros-toggle');*/
     const filterMenu = document.querySelector('.filter-menu');
-    let isExpanded = false;
+    /*let isExpanded = false;
     filterMenu.classList.toggle('collapsed');
-    /*filtrosToggle.textContent = `${isExpanded ? '▼ Ocultar' : '▲ Mostrar'} Filtros`;*/
+    filtrosToggle.textContent = `${isExpanded ? '▼ Ocultar' : '▲ Mostrar'} Filtros`;*/
 
     // Crear y agregar los filtros
     const filtros = crearFiltros();
     filterMenu.appendChild(filtros);
 
-    filtrosToggle.addEventListener('click', () => {
+    /*filtrosToggle.addEventListener('click', () => {
         isExpanded = !isExpanded;
         filterMenu.classList.toggle('collapsed');
         filtrosToggle.textContent = `${isExpanded ? 'Ocultar Filtros: ▲ ' : ' Mostrar Filtros: ▼'}`;
         
         // Cambiar la visibilidad de los filtros
         /*filterMenu.style.display = isExpanded ? 'block' : 'none';*/ // Mostrar u ocultar
-    });
+    });*/
 
      // En la sección de filtros
      function crearFiltros() {
