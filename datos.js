@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         filtrosToggle.textContent = `${isExpanded ? 'Ocultar Filtros: ▲ ' : ' Mostrar Filtros: ▼'}`;
         
         // Cambiar la visibilidad de los filtros
-        /*filterMenu.style.display = isExpanded ? 'block' : 'none';*/ // Mostrar u ocultar
+        filterMenu.style.display = isExpanded ? 'block' : 'none'; // Mostrar u ocultar
     });*/
 
      // En la sección de filtros
