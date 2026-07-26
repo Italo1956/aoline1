@@ -636,7 +636,8 @@ h1 {
         height: 28px;
     }
     .logo-container svg text:last-of-type {
-        display: none; /* Oculta "AMAZON ANALYTICS" */
+        font-size: 15px !important;
+        letter-spacing: 2px !important;
     }
 }
 
