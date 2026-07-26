@@ -617,50 +617,41 @@ h1 {
     background-color: #b0b0b0;
 }
 
-/* ===== LOGO AOLINE3 ===== */
-.header h1, .header svg {
-    float: left;
+/* Logo dentro del menú de filtros */
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 10px;
 }
 
-/* Para pantallas de 1680px o menos, el logo se achica */
-@media (max-width: 1680px) {
-    .header svg {
-        height: 30px !important;
-        width: auto !important:
-    }
-    .header svg text:first-of-type {
-        font-size: 27px !important;
-    }
-    .header svg text:last-of-type {
-        font-size: 15px !important;
-        letter-spacing: 2px !important;
-    }
+.logo-container svg {
+    height: 35px;
+    width: auto;
 }
 
-/* Para pantallas de 1400px o menos, ocultamos el subtítulo */
+/* Para pantallas pequeñas, el logo se achica */
 @media (max-width: 1400px) {
-    .header svg text:last-of-type {
-        display: none;
+    .logo-container svg {
+        height: 28px;
     }
-    .header svg {
-        height: 30px !important;
+    .logo-container svg text:last-of-type {
+        display: none; /* Oculta "AMAZON ANALYTICS" */
     }
 }
 
-/* Para pantallas de 1200px o menos, solo el icono sin texto */
 @media (max-width: 1200px) {
-    .header svg text {
-        display: none;
+    .logo-container svg text {
+        display: none; /* Oculta todo el texto, solo icono */
     }
-    .header svg {
-        height: 32px !important;
-        width: 32px !important;
+    .logo-container svg {
+        height: 30px;
+        width: 30px;
     }
 }
 
-/* Para móvil */
 @media (max-width: 768px) {
-    .header svg {
-        display: none;
+    .logo-container {
+        display: none; /* Oculta el logo en móvil */
     }
 }
