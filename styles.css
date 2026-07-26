@@ -616,3 +616,50 @@ h1 {
 .sorted {
     background-color: #b0b0b0;
 }
+
+/* ===== LOGO AOLINE3 ===== */
+.header h1, .header svg {
+    float: left;
+}
+
+/* Para pantallas de 1600px o menos, el logo se achica */
+@media (max-width: 1600px) {
+    .header svg {
+        height: 28px !important;
+    }
+    .header svg text:first-of-type {
+        font-size: 13px !important;
+    }
+    .header svg text:last-of-type {
+        font-size: 5px !important;
+        letter-spacing: 2px !important;
+    }
+}
+
+/* Para pantallas de 1400px o menos, ocultamos el subtítulo */
+@media (max-width: 1400px) {
+    .header svg text:last-of-type {
+        display: none;
+    }
+    .header svg {
+        height: 30px !important;
+    }
+}
+
+/* Para pantallas de 1200px o menos, solo el icono sin texto */
+@media (max-width: 1200px) {
+    .header svg text {
+        display: none;
+    }
+    .header svg {
+        height: 32px !important;
+        width: 32px !important;
+    }
+}
+
+/* Para móvil */
+@media (max-width: 768px) {
+    .header svg {
+        display: none;
+    }
+}
