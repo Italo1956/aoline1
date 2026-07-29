@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    ```javascript
 async function cargarDatos() {
     try {
         const respuesta = await fetch('datos.json');
