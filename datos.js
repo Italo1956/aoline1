@@ -161,8 +161,6 @@ async function cargarDatos() {
         console.error('Error al cargar datos:', error);
     }
 }
-```
-
 
     function imagenExiste(url) {
         return new Promise((resolve) => {
