@@ -401,7 +401,7 @@ async function cargarDatos() {
         document.getElementById('storeFilter').value = '';
         document.getElementById('sortBy').value = 'indiceDesc';
         currentPage = 1;
-        mostrarProductos(productosOriginales);
+        aplicarFiltros();
         document.querySelector('.contador-productos').textContent = productosOriginales.length;
     }
 
