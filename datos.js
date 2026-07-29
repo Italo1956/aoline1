@@ -335,6 +335,12 @@ async function cargarDatos() {
         });
 
         switch (ordenar) {
+            case 'indiceAsc':
+                filtrados.sort((a, b) => a.indiceOriginal - b.indiceOriginal);
+                break;
+            case 'indiceDesc':
+                filtrados.sort((a, b) => b.indiceOriginal - a.indiceOriginal);
+                break;
             case 'salesRankAsc':
                 filtrados.sort((a, b) => a.sales_rank - b.sales_rank);
                 break;
@@ -393,7 +399,7 @@ async function cargarDatos() {
         document.getElementById('salesRankMin').value = '';
         document.getElementById('salesRankMax').value = '';
         document.getElementById('storeFilter').value = '';
-        document.getElementById('sortBy').value = 'index';
+        document.getElementById('sortBy').value = 'indiceDesc';
         currentPage = 1;
         mostrarProductos(productosOriginales);
         document.querySelector('.contador-productos').textContent = productosOriginales.length;
